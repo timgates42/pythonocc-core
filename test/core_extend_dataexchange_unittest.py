@@ -27,7 +27,7 @@ from OCC.Extend.DataExchange.STEP import (read_step_file, write_step_file,
                                           read_step_file_with_names_colors)
 from OCC.Extend.DataExchange.STL import read_stl_file, write_stl_file
 from OCC.Extend.DataExchange.IGES import read_iges_file, write_iges_file
-from OCC.Extend.DataExchange.SVG import export_shape_to_svg
+from OCC.Extend.DataExchange.SVG import export_shape_to_svg, HAVE_SVGWRITE
 
 
 SAMPLES_DIRECTORY = os.path.join('.', 'test_io')
@@ -76,9 +76,10 @@ class TestExtendDataExchange(unittest.TestCase):
 
 
     def test_export_shape_to_svg(self):
-        svg_filename = get_test_fullname('sample.svg')
-        export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
-        self.assertTrue(os.path.isfile(svg_filename))
+        if HAVE_SVGWRITE:
+            svg_filename = get_test_fullname('sample.svg')
+            export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
+            self.assertTrue(os.path.isfile(svg_filename))
 
 
     def test_write_step_ap203(self):
