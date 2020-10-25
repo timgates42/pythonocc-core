@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tcollection.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1040,21 +1041,35 @@ None
 ") Prepend;
 		void Prepend(const TCollection_AsciiString & other);
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Displays <self> on a stream.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Returns
+-------
+astream: Standard_OStream
+") Print;
+		void Print(Standard_OStream &OutValue);
+
+		/****************** Read ******************/
+		/**** md5 signature: e0872b647041ae5015cfaa77802dd596 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Read <self> from a stream.
+
+Parameters
+----------
+astream: Standard_IStream
+
+Returns
+-------
+None
+") Read;
+		void Read(Standard_IStream &InValue);
+
 		/****************** RealValue ******************/
 		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
 		%feature("compactdefaultargs") RealValue;
@@ -1689,14 +1704,20 @@ int
 ") NbBuckets;
 		Standard_Integer NbBuckets();
 
+		/****************** Statistics ******************/
+		/**** md5 signature: dd40e5ebd6696507a43830c015c14e29 ****/
+		%feature("compactdefaultargs") Statistics;
+		%feature("autodoc", "Prints on <s> usefull statistics about the map <self>. it can be used to test the quality of the hashcoding.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string StatisticsToString() {
-            std::stringstream s;
-            self->Statistics(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+S: Standard_OStream
+") Statistics;
+		void Statistics(Standard_OStream &OutValue);
+
 };
 
 
@@ -2253,14 +2274,20 @@ int
 ") LengthOfCString;
 		Standard_Integer LengthOfCString();
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Displays <self> .
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+astream: Standard_OStream
+") Print;
+		void Print(Standard_OStream &OutValue);
+
 		/****************** Remove ******************/
 		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
 		%feature("compactdefaultargs") Remove;
@@ -3181,14 +3208,20 @@ None
 ") Prepend;
 		void Prepend(const opencascade::handle<TCollection_HAsciiString> & other);
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints this string on the stream <astream>.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+astream: Standard_OStream
+") Print;
+		void Print(Standard_OStream &OutValue);
+
 		/****************** RealValue ******************/
 		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
 		%feature("compactdefaultargs") RealValue;
@@ -3806,14 +3839,20 @@ int
 ") Length;
 		Standard_Integer Length();
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Displays <self> .
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+astream: Standard_OStream
+") Print;
+		void Print(Standard_OStream &OutValue);
+
 		/****************** Remove ******************/
 		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
 		%feature("compactdefaultargs") Remove;

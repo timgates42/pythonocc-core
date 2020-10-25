@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_math.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -267,14 +268,20 @@ None
 ") math_BFGS;
 		 math_BFGS(const Standard_Integer NbVariables, const Standard_Real Tolerance = 1.0e-8, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Gradient ******************/
 		/**** md5 signature: 6c3691fb2b0bb6085965955bdcce0a12 ****/
 		%feature("compactdefaultargs") Gradient;
@@ -447,14 +454,20 @@ float
 ") Derivative;
 		Standard_Real Derivative();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redifine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -606,14 +619,20 @@ None
 ") math_BracketMinimum;
 		 math_BracketMinimum(math_Function & F, const Standard_Real A, const Standard_Real B, const Standard_Real FA, const Standard_Real FB);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** FunctionValues ******************/
 		/**** md5 signature: 1c73efc8bd333bc361f9878adf3d2f5e ****/
 		%feature("compactdefaultargs") FunctionValues;
@@ -754,14 +773,20 @@ None
 ") math_BracketedRoot;
 		 math_BracketedRoot(math_Function & F, const Standard_Real Bound1, const Standard_Real Bound2, const Standard_Real Tolerance, const Standard_Integer NbIterations = 100, const Standard_Real ZEPS = 1.0e-12);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -859,14 +884,20 @@ None
 ") math_BrentMinimum;
 		 math_BrentMinimum(const Standard_Real TolX, const Standard_Real Fbx, const Standard_Integer NbIterations = 100, const Standard_Real ZEPS = 1.0e-12);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -1178,14 +1209,20 @@ float
 ") Determinant;
 		Standard_Real Determinant();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Inverse ******************/
 		/**** md5 signature: 3ac969006d2d462bc1e6ea2d7d8929e6 ****/
 		%feature("compactdefaultargs") Inverse;
@@ -1323,14 +1360,20 @@ None
 ") math_DirectPolynomialRoots;
 		 math_DirectPolynomialRoots(const Standard_Real A, const Standard_Real B);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** InfiniteRoots ******************/
 		/**** md5 signature: 6c844bee82586a7c3f4a33590d02fc3c ****/
 		%feature("compactdefaultargs") InfiniteRoots;
@@ -1645,14 +1688,20 @@ None
 ") math_FRPR;
 		 math_FRPR(const math_MultipleVarFunctionWithGradient & theFunction, const Standard_Real theTolerance, const Standard_Integer theNbIterations = 200, const Standard_Real theZEPS = 1.0e-12);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Gradient ******************/
 		/**** md5 signature: 6c3691fb2b0bb6085965955bdcce0a12 ****/
 		%feature("compactdefaultargs") Gradient;
@@ -1843,14 +1892,20 @@ None
 ") math_FunctionAllRoots;
 		 math_FunctionAllRoots(math_FunctionWithDerivative & F, const math_FunctionSample & S, const Standard_Real EpsX, const Standard_Real EpsF, const Standard_Real EpsNul);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** GetInterval ******************/
 		/**** md5 signature: 6687e7adaceb5b49c509c22d7f0c75d8 ****/
 		%feature("compactdefaultargs") GetInterval;
@@ -2011,14 +2066,20 @@ float
 ") Derivative;
 		Standard_Real Derivative();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -2103,14 +2164,20 @@ None
 ") math_FunctionRoots;
 		 math_FunctionRoots(math_FunctionWithDerivative & F, const Standard_Real A, const Standard_Real B, const Standard_Integer NbSample, const Standard_Real EpsX = 0.0, const Standard_Real EpsF = 0.0, const Standard_Real EpsNull = 0.0, const Standard_Real K = 0.0);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsAllNull ******************/
 		/**** md5 signature: e00a1caef8eb3e9a54836fe956196c51 ****/
 		%feature("compactdefaultargs") IsAllNull;
@@ -2385,14 +2452,20 @@ None
 ") Derivative;
 		void Derivative(math_Matrix & Der);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** FunctionSetErrors ******************/
 		/**** md5 signature: f60cf743c92edccf04b38617ec21af42 ****/
 		%feature("compactdefaultargs") FunctionSetErrors;
@@ -2601,14 +2674,20 @@ float
 ") Determinant;
 		Standard_Real Determinant();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Invert ******************/
 		/**** md5 signature: 3042934a9caa618d22aceb841b1bb048 ****/
 		%feature("compactdefaultargs") Invert;
@@ -2697,14 +2776,20 @@ None
 ") math_GaussLeastSquare;
 		 math_GaussLeastSquare(const math_Matrix & A, const Standard_Real MinPivot = 1.0e-20);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -2764,14 +2849,20 @@ None
 ") math_GaussMultipleIntegration;
 		 math_GaussMultipleIntegration(math_MultipleVarFunction & F, const math_Vector & Lower, const math_Vector & Upper, const math_IntegerVector & Order);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -2826,14 +2917,20 @@ None
 ") math_GaussSetIntegration;
 		 math_GaussSetIntegration(math_FunctionSet & F, const math_Vector & Lower, const math_Vector & Upper, const math_IntegerVector & Order);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -2918,14 +3015,20 @@ None
 ") math_GaussSingleIntegration;
 		 math_GaussSingleIntegration(math_Function & F, const Standard_Real Lower, const Standard_Real Upper, const Standard_Integer Order, const Standard_Real Tol);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -3282,14 +3385,20 @@ math_Matrix
 ") AllValues;
 		const math_Matrix & AllValues();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints informations on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -3443,14 +3552,20 @@ math_IntegerVector
 ") Added;
 		math_IntegerVector Added(const math_IntegerVector & theRight);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 85af5cb6e1b130aa09c69332795e4c2f ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream theo information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theO: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Init ******************/
 		/**** md5 signature: 1fe27bc9df2ed19eff044a233606ff79 ****/
 		%feature("compactdefaultargs") Init;
@@ -3907,14 +4022,20 @@ None
 ") math_Jacobi;
 		 math_Jacobi(const math_Matrix & A);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -4366,14 +4487,20 @@ math_Matrix
 ") Divided;
 		math_Matrix Divided(const Standard_Real Right);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Init ******************/
 		/**** md5 signature: 6aef026ef1fcb18a844e723ac935cd4b ****/
 		%feature("compactdefaultargs") Init;
@@ -5134,14 +5261,20 @@ float
 ") Derivative;
 		Standard_Real Derivative();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -5279,14 +5412,20 @@ None
 ") Derivative;
 		void Derivative(math_Matrix & Der);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** FunctionSetErrors ******************/
 		/**** md5 signature: f60cf743c92edccf04b38617ec21af42 ****/
 		%feature("compactdefaultargs") FunctionSetErrors;
@@ -5466,14 +5605,20 @@ None
 ") math_NewtonMinimum;
 		 math_NewtonMinimum(const math_MultipleVarFunctionWithHessian & theFunction, const Standard_Real theTolerance = Precision::Confusion(), const Standard_Integer theNbIterations = 40, const Standard_Real theConvexity = 1.0e-6, const Standard_Boolean theWithSingularity = Standard_True);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** GetStatus ******************/
 		/**** md5 signature: f0121c820ebe3b5d3aba6ff3efc32974 ****/
 		%feature("compactdefaultargs") GetStatus;
@@ -5791,14 +5936,20 @@ None
 ") math_Powell;
 		 math_Powell(const math_MultipleVarFunction & theFunction, const Standard_Real theTolerance, const Standard_Integer theNbIterations = 200, const Standard_Real theZEPS = 1.0e-12);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -5919,14 +6070,20 @@ None
 ") math_SVD;
 		 math_SVD(const math_Matrix & A);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
@@ -6045,14 +6202,20 @@ None
 ") math_TrigonometricFunctionRoots;
 		 math_TrigonometricFunctionRoots(const Standard_Real C, const Standard_Real D, const Standard_Real E, const Standard_Real InfBound, const Standard_Real SupBound);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** InfiniteRoots ******************/
 		/**** md5 signature: 6c844bee82586a7c3f4a33590d02fc3c ****/
 		%feature("compactdefaultargs") InfiniteRoots;
@@ -6178,14 +6341,20 @@ None
 ") Duale;
 		void Duale(math_Vector & V);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Error ******************/
 		/**** md5 signature: b1e838c6dcbfa6a1bf16d1bc7e40df88 ****/
 		%feature("compactdefaultargs") Error;
@@ -6500,14 +6669,20 @@ math_Vector
 ") Divided;
 		math_Vector Divided(const Standard_Real theRight);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 85af5cb6e1b130aa09c69332795e4c2f ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theO: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** Init ******************/
 		/**** md5 signature: aa5adf884f0373c9b54359f444273ad5 ****/
 		%feature("compactdefaultargs") Init;

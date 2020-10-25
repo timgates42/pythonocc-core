@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_advapp2var.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -273,14 +274,20 @@ float
 ") CritError;
 		Standard_Real CritError(const Standard_Integer Dimension, const Standard_Integer Index);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o informations on the current state of the object.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;

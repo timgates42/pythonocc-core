@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prs3d.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -705,14 +706,22 @@ bool
 ") DrawHiddenLine;
 		Standard_Boolean DrawHiddenLine();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** EnableDrawHiddenLine ******************/
 		/**** md5 signature: 5cd9db795aefc1eee38a63bd3f8ef65f ****/
 		%feature("compactdefaultargs") EnableDrawHiddenLine;
@@ -2844,14 +2853,22 @@ opencascade::handle<Graphic3d_AspectLine3d>
 ") Aspect;
 		const opencascade::handle<Graphic3d_AspectLine3d> & Aspect();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Length ******************/
 		/**** md5 signature: 1d863a710d06afea5559458878200357 ****/
 		%feature("compactdefaultargs") Length;
@@ -3054,14 +3071,22 @@ bool
 ") DrawThirdAxis;
 		Standard_Boolean DrawThirdAxis();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** FirstAxisAspect ******************/
 		/**** md5 signature: 9aa788101e717f40cfacb0717ed44a7c ****/
 		%feature("compactdefaultargs") FirstAxisAspect;
@@ -3430,14 +3455,22 @@ float
 ") ArrowTailSize;
 		Standard_Real ArrowTailSize();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** ExtensionSize ******************/
 		/**** md5 signature: 876d08434cb9c896916a7933c4b53809 ****/
 		%feature("compactdefaultargs") ExtensionSize;
@@ -3817,14 +3850,22 @@ opencascade::handle<Graphic3d_AspectLine3d>
 ") Aspect;
 		const opencascade::handle<Graphic3d_AspectLine3d> & Aspect();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** SetAspect ******************/
 		/**** md5 signature: 56753271c32070a7f0d3996502dbd4eb ****/
 		%feature("compactdefaultargs") SetAspect;
@@ -4000,14 +4041,22 @@ bool
 ") DisplayIso;
 		Standard_Boolean DisplayIso();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** EdgesAspect ******************/
 		/**** md5 signature: 99d38bc9cc235945a249087a8e222d9d ****/
 		%feature("compactdefaultargs") EdgesAspect;
@@ -4326,14 +4375,22 @@ opencascade::handle<Graphic3d_AspectMarker3d>
 ") Aspect;
 		const opencascade::handle<Graphic3d_AspectMarker3d> & Aspect();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** GetTexture ******************/
 		/**** md5 signature: 136a09247f5a3ec392ae0210becb9db4 ****/
 		%feature("compactdefaultargs") GetTexture;
@@ -4489,14 +4546,22 @@ Quantity_Color
 ") Color;
 		const Quantity_Color & Color(const Aspect_TypeOfFacingModel aModel = Aspect_TOFM_FRONT_SIDE);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Material ******************/
 		/**** md5 signature: 5931f39cda36847ef31b8a02dd06c896 ****/
 		%feature("compactdefaultargs") Material;
@@ -4767,14 +4832,22 @@ opencascade::handle<Graphic3d_AspectText3d>
 ") Aspect;
 		const opencascade::handle<Graphic3d_AspectText3d> & Aspect();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Height ******************/
 		/**** md5 signature: e5e3c5b90c971d7ac0e43c341f82b9e0 ****/
 		%feature("compactdefaultargs") Height;

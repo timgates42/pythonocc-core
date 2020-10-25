@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tobj.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1844,14 +1845,20 @@ opencascade::handle<TObj_Object>
 ") CreateNewObject;
 		static opencascade::handle<TObj_Object> CreateNewObject(const char * theType, const TDF_Label & theLabel);
 
+		/****************** DumpTypes ******************/
+		/**** md5 signature: 6b281615817b960184bb20e020b9d659 ****/
+		%feature("compactdefaultargs") DumpTypes;
+		%feature("autodoc", "Dumps names of all the types registered for persistence to the specified stream.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpTypesToString() {
-            std::stringstream s;
-            self->DumpTypes(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theOs: Standard_OStream
+") DumpTypes;
+		static void DumpTypes(Standard_OStream &OutValue);
+
 };
 
 
@@ -2868,14 +2875,20 @@ None
 ") TObj_TXYZ;
 		 TObj_TXYZ();
 
+		/****************** Dump ******************/
+		/**** md5 signature: a70630ee0dbc4de065e099a9519a2a06 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "This method dumps the attribute value into the stream.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: d4d7c3399f4d5d1d9662bdcf64101489 ****/
 		%feature("compactdefaultargs") Get;

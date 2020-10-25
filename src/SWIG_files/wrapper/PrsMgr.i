@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_prsmgr.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -336,14 +337,22 @@ int
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 595d01778fb31e0a4540c99629539134 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** DynamicHilightAttributes ******************/
 		/**** md5 signature: 9c44b3555020951e689ea9d2e141bc3d ****/
 		%feature("compactdefaultargs") DynamicHilightAttributes;

@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_interface.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -7240,21 +7241,53 @@ ss: int
 ") NDate;
 		static Standard_Boolean NDate(const char * text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/****************** Print ******************/
+		/**** md5 signature: 8ceabb583669672b2199c7b698914502 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints a string on an output stream, as follows : accompagned with blanks, to give up to <max> charis at all, justified according just : -1 (d) : left 0 : center 1 : right maximum 76 characters.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintTraceToString() {
-            std::stringstream s;
-            self->PrintTrace(s);
-            return s.str();}
-        };
+Parameters
+----------
+val: char *
+max: int
+just: int,optional
+	default value is -1
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static void Print(Standard_OStream &OutValue, const char * val, const Standard_Integer max, const Standard_Integer just = -1);
+
+		/****************** PrintTrace ******************/
+		/**** md5 signature: 1e6fc924febc04632e11bb3880253bee ****/
+		%feature("compactdefaultargs") PrintTrace;
+		%feature("autodoc", "Prints the recorded errors (without title; can be empty, this is the normally expected case).
+
+Parameters
+----------
+
+Returns
+-------
+S: Standard_OStream
+") PrintTrace;
+		static void PrintTrace(Standard_OStream &OutValue);
+
+		/****************** Read ******************/
+		/**** md5 signature: f8598b09b5e3b635ed31058415611435 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a list of messages from a stream, returns read count 0 means empty file, -1 means error.
+
+Parameters
+----------
+S: Standard_IStream
+
+Returns
+-------
+int
+") Read;
+		static Standard_Integer Read(Standard_IStream &InValue);
+
 		/****************** Read ******************/
 		/**** md5 signature: 858a3ab50e2d14b2c69b3dde90ff0915 ****/
 		%feature("compactdefaultargs") Read;
@@ -7366,6 +7399,22 @@ Returns
 char *
 ") Value;
 		const char * Value();
+
+		/****************** Write ******************/
+		/**** md5 signature: 5d0fb0710cbfaa527a5eba31f6de7c16 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the list of messages recorded to be translated, to a stream. writes all the list (default) or only keys which begin by <rootkey>. returns the count of written messages.
+
+Parameters
+----------
+rootkey: char *,optional
+	default value is ""
+
+Returns
+-------
+S: Standard_OStream
+") Write;
+		static Standard_Integer Write(Standard_OStream &OutValue, const char * rootkey = "");
 
 };
 

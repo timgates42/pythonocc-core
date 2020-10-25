@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appdef.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1717,14 +1718,20 @@ None
 ") AppDef_MultiLine;
 		 AppDef_MultiLine(const TColgp_Array1OfPnt2d & tabP2d);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** NbMultiPoints ******************/
 		/**** md5 signature: 3773aba9a0a09cf608eddf5448da667d ****/
 		%feature("compactdefaultargs") NbMultiPoints;
@@ -2003,14 +2010,20 @@ gp_Vec2d
 ") Curv2d;
 		gp_Vec2d Curv2d(const Standard_Integer Index);
 
+		/****************** Dump ******************/
+		/**** md5 signature: b42defe2d7a7208961fa81b225a70479 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		virtual void Dump(Standard_OStream &OutValue);
+
 		/****************** IsCurvaturePoint ******************/
 		/**** md5 signature: d472719ada146163920fff12150b4a88 ****/
 		%feature("compactdefaultargs") IsCurvaturePoint;
@@ -5713,14 +5726,20 @@ None
 ") Distance;
 		void Distance(math_Matrix & mat);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. maxerror,maxerrorindex,averageerror,quadraticerror,criterium distances,degre,nombre de poles, parametres, noeuds.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** IsCreated ******************/
 		/**** md5 signature: ee98cd23a823f97ff49721b779c9bc76 ****/
 		%feature("compactdefaultargs") IsCreated;

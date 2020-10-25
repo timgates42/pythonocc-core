@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topopebreptool.ht
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -204,6 +205,21 @@ Returns
 bool
 ") MakeFaces;
 		static Standard_Boolean MakeFaces(const TopoDS_Face & F, const TopTools_ListOfShape & LOF, const TopTools_IndexedMapOfOrientedShape & MshNOK, TopTools_ListOfShape & LOFF);
+
+		/****************** Print ******************/
+		/**** md5 signature: f7153ca19881868c1f5cfcc1057b3413 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints <oct> as string on stream <s>; returns <s>.
+
+Parameters
+----------
+OCT: TopOpeBRepTool_OutCurveType
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TopOpeBRepTool_OutCurveType OCT, Standard_OStream &OutValue);
 
 		/****************** PurgeClosingEdges ******************/
 		/**** md5 signature: 3f09068948e5882f4cb7f9c6684a5042 ****/
@@ -2911,14 +2927,20 @@ None
 ") TopOpeBRepTool_ShapeExplorer;
 		 TopOpeBRepTool_ShapeExplorer(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
+		/****************** DumpCurrent ******************/
+		/**** md5 signature: db73845179d5206e02697128b933f101 ****/
+		%feature("compactdefaultargs") DumpCurrent;
+		%feature("autodoc", "Dump info on current shape to stream.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpCurrentToString() {
-            std::stringstream s;
-            self->DumpCurrent(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") DumpCurrent;
+		Standard_OStream & DumpCurrent(Standard_OStream &OutValue);
+
 		/****************** Index ******************/
 		/**** md5 signature: 0be2d384cf83d16771bb3f9c857c6326 ****/
 		%feature("compactdefaultargs") Index;

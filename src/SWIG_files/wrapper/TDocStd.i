@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdocstd.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -354,6 +355,22 @@ PCDM_ReaderStatus
 ") Open;
 		PCDM_ReaderStatus Open(const TCollection_ExtendedString & path, opencascade::handle<TDocStd_Document> & aDoc);
 
+		/****************** Open ******************/
+		/**** md5 signature: 0c2d9a297771c1d27eefc6f8f7c39b7f ****/
+		%feature("compactdefaultargs") Open;
+		%feature("autodoc", "Retrieves adoc from standard seekable stream theistream. the stream should support seek fuctionality.
+
+Parameters
+----------
+theIStream: Standard_IStream
+theDoc: TDocStd_Document
+
+Returns
+-------
+PCDM_ReaderStatus
+") Open;
+		PCDM_ReaderStatus Open(Standard_IStream &InValue, opencascade::handle<TDocStd_Document> & theDoc);
+
 		/****************** ReadingFormats ******************/
 		/**** md5 signature: 6dff661583c284b08e2b917089276643 ****/
 		%feature("compactdefaultargs") ReadingFormats;
@@ -439,6 +456,21 @@ PCDM_StoreStatus
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & aDoc, const TCollection_ExtendedString & path);
 
 		/****************** SaveAs ******************/
+		/**** md5 signature: 6b9b61e1edfd103f6b19d2bf06a1aab2 ****/
+		%feature("compactdefaultargs") SaveAs;
+		%feature("autodoc", "Save thedoc to standard seekable stream theostream. the stream should support seek fuctionality.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+
+Returns
+-------
+theOStream: Standard_OStream
+") SaveAs;
+		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, Standard_OStream &OutValue);
+
+		/****************** SaveAs ******************/
 		/**** md5 signature: f7c6d751122ccfe78ef23477a560330e ****/
 		%feature("compactdefaultargs") SaveAs;
 		%feature("autodoc", "Save the active document in the file <name> in the path <path> . overwrite the file if it already exist.
@@ -454,6 +486,22 @@ Returns
 PCDM_StoreStatus
 ") SaveAs;
 		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & aDoc, const TCollection_ExtendedString & path, TCollection_ExtendedString & theStatusMessage);
+
+		/****************** SaveAs ******************/
+		/**** md5 signature: 70170cb3cfa029f774e05f4868108964 ****/
+		%feature("compactdefaultargs") SaveAs;
+		%feature("autodoc", "Save thedoc to standard seekable stream theostream. the stream should support seek fuctionality.
+
+Parameters
+----------
+theDoc: TDocStd_Document
+theStatusMessage: TCollection_ExtendedString
+
+Returns
+-------
+theOStream: Standard_OStream
+") SaveAs;
+		PCDM_StoreStatus SaveAs(const opencascade::handle<TDocStd_Document> & theDoc, Standard_OStream &OutValue, TCollection_ExtendedString & theStatusMessage);
 
 		/****************** WritingFormats ******************/
 		/**** md5 signature: a5407beb640b0ebe68c0c3306feeeddb ****/
@@ -497,14 +545,20 @@ None
 ") TDocStd_ApplicationDelta;
 		 TDocStd_ApplicationDelta();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 43df1fb908adbf242957532375689066 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** GetDocuments ******************/
 		/**** md5 signature: 3949b6234d6a0eb9778487caa2291ad4 ****/
 		%feature("compactdefaultargs") GetDocuments;
@@ -1302,14 +1356,20 @@ bool
 ") Contains;
 		static Standard_Boolean Contains(const TDF_Label & alabel);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: bd123f000340e7375ce09c289c0daf49 ****/
 		%feature("compactdefaultargs") Get;
@@ -1568,14 +1628,20 @@ TDocStd_SequenceOfDocument
 ") Documents;
 		const TDocStd_SequenceOfDocument & Documents();
 
+		/****************** DumpTransaction ******************/
+		/**** md5 signature: 4eb314c9880f16b84a5b19db7c403e6c ****/
+		%feature("compactdefaultargs") DumpTransaction;
+		%feature("autodoc", "Dumps transactions in undos and redos.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpTransactionToString() {
-            std::stringstream s;
-            self->DumpTransaction(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theOS: Standard_OStream
+") DumpTransaction;
+		void DumpTransaction(Standard_OStream &OutValue);
+
 		/****************** GetAvailableRedos ******************/
 		/**** md5 signature: 500cc68e983f9a7d304824d6e36eaecc ****/
 		%feature("compactdefaultargs") GetAvailableRedos;
@@ -1774,14 +1840,20 @@ None
 ") TDocStd_Owner;
 		 TDocStd_Owner();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetDocument ******************/
 		/**** md5 signature: 79c1f99856b1ab066d94b2ba86b72e8b ****/
 		%feature("compactdefaultargs") GetDocument;
@@ -2118,14 +2190,20 @@ TCollection_AsciiString
 ") DocumentEntry;
 		const TCollection_AsciiString & DocumentEntry();
 
+		/****************** Dump ******************/
+		/**** md5 signature: f10ae7331e480cfb94f59763803fa51d ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the attribute on <astream>.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -2373,14 +2451,20 @@ opencascade::handle<TDF_Attribute>
 ") BackupCopy;
 		opencascade::handle<TDF_Attribute> BackupCopy();
 
+		/****************** Dump ******************/
+		/**** md5 signature: f10ae7331e480cfb94f59763803fa51d ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the attribute on <astream>.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;

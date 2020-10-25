@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_stepdata.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -4784,14 +4785,20 @@ None
 ") OpenTypedSub;
 		void OpenTypedSub(const char * subtype);
 
+		/****************** Print ******************/
+		/**** md5 signature: 2eb8b686c42ac7926ce46f27d6e81985 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Writes result on an output defined as an ostream then clears it.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		Standard_Boolean Print(Standard_OStream &OutValue);
+
 		/****************** Send ******************/
 		/**** md5 signature: 834a80f8fb88341c53a16609c1df2e80 ****/
 		%feature("compactdefaultargs") Send;

@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tnaming.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -344,6 +345,51 @@ Returns
 bool
 ") OuterWire;
 		static Standard_Boolean OuterWire(const TopoDS_Face & theFace, TopoDS_Wire & theWire);
+
+		/****************** Print ******************/
+		/**** md5 signature: 2b639b8df3fe00401374dd95e415224e ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the evolution <evol> as a string on the stream <s> and returns <s>.
+
+Parameters
+----------
+EVOL: TNaming_Evolution
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TNaming_Evolution EVOL, Standard_OStream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 0086f15e63801a19d591d96a9d20bb2a ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the name of name type <name> as a string on the stream <s> and returns <s>.
+
+Parameters
+----------
+NAME: TNaming_NameType
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TNaming_NameType NAME, Standard_OStream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: acadfcdd30dbbb74b400e87246c92ac0 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the content of usedshapes private attribute as a string table on the stream <s> and returns <s>.
+
+Parameters
+----------
+ACCESS: TDF_Label
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TDF_Label & ACCESS, Standard_OStream &OutValue);
 
 		/****************** Replicate ******************/
 		/**** md5 signature: b05536a641bcb5721eea10c9d85c5058 ****/
@@ -1764,14 +1810,20 @@ opencascade::handle<TDF_DeltaOnRemoval>
 ") DeltaOnRemoval;
 		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the attribute on <astream>.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Evolution ******************/
 		/**** md5 signature: 807db9d74d271aa42843b60e4aab188f ****/
 		%feature("compactdefaultargs") Evolution;
@@ -1948,14 +2000,36 @@ TNaming_Name
 ") ChangeName;
 		TNaming_Name & ChangeName();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
+		/****************** ExtendedDump ******************/
+		/**** md5 signature: cdafdec412b1ac94fc1e049a6ac0bb97 ****/
+		%feature("compactdefaultargs") ExtendedDump;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+aFilter: TDF_IDFilter
+aMap: TDF_AttributeIndexedMap
+
+Returns
+-------
+anOS: Standard_OStream
+") ExtendedDump;
+		virtual void ExtendedDump(Standard_OStream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -3829,14 +3903,20 @@ None
 ") Destroy;
 		void Destroy();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the attribute on <astream>.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;

@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_message.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -2858,14 +2859,35 @@ None
 ") Clear;
 		void Clear(const opencascade::handle<Standard_Type> & theType);
 
+		/****************** Dump ******************/
+		/**** md5 signature: c086355fe494bcbcf3ea9cc5c4ebee71 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps all collected alerts to stream.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theOS: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: d701e8989524635f96b7e9629956e021 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps collected alerts with specified gravity to stream.
+
+Parameters
+----------
+theGravity: Message_Gravity
+
+Returns
+-------
+theOS: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue, Message_Gravity theGravity);
+
 		/****************** GetAlerts ******************/
 		/**** md5 signature: e105d4af57088013fb229b16770b2450 ****/
 		%feature("compactdefaultargs") GetAlerts;

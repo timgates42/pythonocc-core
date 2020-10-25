@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gccent.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -255,6 +256,21 @@ Returns
 char *
 ") PositionToString;
 		static const char * PositionToString(GccEnt_Position thePosition);
+
+		/****************** Print ******************/
+		/**** md5 signature: 068a92268570b76299d24afa3d55cb04 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the name of position type as a string on the stream.
+
+Parameters
+----------
+thePosition: GccEnt_Position
+
+Returns
+-------
+theStream: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const GccEnt_Position thePosition, Standard_OStream &OutValue);
 
 		/****************** Unqualified ******************/
 		/**** md5 signature: 0b3ce4b2adf987fc69edb4f535e49b85 ****/

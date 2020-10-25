@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bindrivers.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -203,6 +204,22 @@ opencascade::handle<BinMDF_ADriverTable>
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
+		/****************** CheckShapeSection ******************/
+		/**** md5 signature: 700e6a408d65152684bc7e5f46482651 ****/
+		%feature("compactdefaultargs") CheckShapeSection;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+thePos: Storage_Position
+theIS: Standard_IStream
+
+Returns
+-------
+None
+") CheckShapeSection;
+		virtual void CheckShapeSection(const Storage_Position & thePos, Standard_IStream &InValue);
+
 		/****************** Clear ******************/
 		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
 		%feature("compactdefaultargs") Clear;
@@ -213,6 +230,24 @@ Returns
 None
 ") Clear;
 		virtual void Clear();
+
+		/****************** ReadShapeSection ******************/
+		/**** md5 signature: 62eeee01918b0154997ebbb84da6c8bc ****/
+		%feature("compactdefaultargs") ReadShapeSection;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theSection: BinLDrivers_DocumentSection
+theIS: Standard_IStream
+isMess: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+None
+") ReadShapeSection;
+		virtual void ReadShapeSection(BinLDrivers_DocumentSection & theSection, Standard_IStream &InValue, const Standard_Boolean isMess = Standard_False);
 
 };
 
@@ -282,6 +317,21 @@ Returns
 None
 ") SetWithTriangles;
 		void SetWithTriangles(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
+
+		/****************** WriteShapeSection ******************/
+		/**** md5 signature: 98de20ec35944b4f9e62436449a4a577 ****/
+		%feature("compactdefaultargs") WriteShapeSection;
+		%feature("autodoc", "Implements the procedure of writing a shape section to file.
+
+Parameters
+----------
+theDocSection: BinLDrivers_DocumentSection
+
+Returns
+-------
+theOS: Standard_OStream
+") WriteShapeSection;
+		virtual void WriteShapeSection(BinLDrivers_DocumentSection & theDocSection, Standard_OStream &OutValue);
 
 };
 

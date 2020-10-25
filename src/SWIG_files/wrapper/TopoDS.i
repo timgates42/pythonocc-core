@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_topods.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -878,14 +879,22 @@ None
 ") Convex;
 		void Convex(Standard_Boolean theIsConvex);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** EmptyCopied ******************/
 		/**** md5 signature: f9424d26c99f755bc5579214a9cd7453 ****/
 		%feature("compactdefaultargs") EmptyCopied;
@@ -1360,14 +1369,14 @@ None
 		from .BRepTools import BRepTools_ShapeSet
 		ss = BRepTools_ShapeSet()
 		ss.Add(self)
-		str_shape = ss.WriteToString()
+		str_shape = ss.Write()
 		indx = ss.Locations().Index(self.Location())
 		return str_shape, indx
 	def __setstate__(self, state):
 		from .BRepTools import BRepTools_ShapeSet
 		topods_str, indx = state
 		ss = BRepTools_ShapeSet()
-		ss.ReadFromString(topods_str)
+		ss.Read(bytes(topods_str, encoding="utf8"))
 		the_shape = ss.Shape(ss.NbShapes())
 		location = ss.Locations().Location(indx)
 		the_shape.Location(location)
@@ -1464,14 +1473,22 @@ None
 ") Convex;
 		void Convex(Standard_Boolean theIsConvex);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** EmptyCopy ******************/
 		/**** md5 signature: de08b6aae09d9de59b334a4b6c880feb ****/
 		%feature("compactdefaultargs") EmptyCopy;

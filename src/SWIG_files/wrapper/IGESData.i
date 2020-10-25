@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igesdata.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -4418,14 +4419,20 @@ None
 ") OwnParams;
 		void OwnParams(const opencascade::handle<IGESData_IGESEntity> & anent);
 
+		/****************** Print ******************/
+		/**** md5 signature: 5e5b127c01c68c6fb6a747c286a95265 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Writes result on an output defined as an ostream resolves stored infos at this time; in particular, numbers of lines used to adress p-section from d-section and final totals takes writemode into account.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		Standard_Boolean Print(Standard_OStream &OutValue);
+
 		/****************** Properties ******************/
 		/**** md5 signature: 593129876ee8c43cc811cf1423c82b5d ****/
 		%feature("compactdefaultargs") Properties;

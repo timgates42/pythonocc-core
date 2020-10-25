@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bnd.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1968,14 +1969,22 @@ None
 ") Dump;
 		void Dump();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Enlarge ******************/
 		/**** md5 signature: b5dbc37ffece9eaee81e33bf3b715eef ****/
 		%feature("compactdefaultargs") Enlarge;
@@ -3052,14 +3061,22 @@ gp_XYZ
 ") Center;
 		const gp_XYZ Center();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Enlarge ******************/
 		/**** md5 signature: d759fcc6f239218e61510f561f9d7a30 ****/
 		%feature("compactdefaultargs") Enlarge;
@@ -3450,14 +3467,22 @@ float
 ") Delta;
 		Standard_Real Delta();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Enlarge ******************/
 		/**** md5 signature: 2c37569c59dcd99db9a5ddf54944897c ****/
 		%feature("compactdefaultargs") Enlarge;

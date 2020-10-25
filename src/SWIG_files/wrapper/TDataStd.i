@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdatastd.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -225,6 +226,21 @@ None
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
+		/****************** Print ******************/
+		/**** md5 signature: 34ef93cfb1f41df788d00d50ea442396 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the name of the real dimension <dim> as a string on the stream <s> and returns <s>.
+
+Parameters
+----------
+DIM: TDataStd_RealEnum
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TDataStd_RealEnum DIM, Standard_OStream &OutValue);
+
 };
 
 
@@ -250,14 +266,20 @@ None
 ") TDataStd_AsciiString;
 		 TDataStd_AsciiString();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: 94caccb04996b56934ce7de2990ed44f ****/
 		%feature("compactdefaultargs") Get;
@@ -445,14 +467,20 @@ None
 ") TDataStd_BooleanArray;
 		 TDataStd_BooleanArray();
 
+		/****************** Dump ******************/
+		/**** md5 signature: b935d5dd68e95802ac42f7875d3b6b15 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -737,14 +765,20 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -1042,14 +1076,20 @@ opencascade::handle<TDF_DeltaOnModification>
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: b935d5dd68e95802ac42f7875d3b6b15 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -1442,14 +1482,20 @@ bool
 ") AfterRetrieval;
 		Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: e1828ec7ac26ddd7d323df220dcd7fed ****/
 		%feature("compactdefaultargs") Get;
@@ -1598,14 +1644,20 @@ None
 ") TDataStd_Current;
 		 TDataStd_Current();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: d34c5545c54e0e96d2b5128d71a2e61c ****/
 		%feature("compactdefaultargs") Get;
@@ -1993,14 +2045,20 @@ opencascade::handle<TDataStd_Directory>
 ") AddDirectory;
 		static opencascade::handle<TDataStd_Directory> AddDirectory(const opencascade::handle<TDataStd_Directory> & dir);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Find ******************/
 		/**** md5 signature: c975c2b1384d4b33c2a54d78edf27d11 ****/
 		%feature("compactdefaultargs") Find;
@@ -2153,14 +2211,20 @@ None
 ") TDataStd_Expression;
 		 TDataStd_Expression();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetExpression ******************/
 		/**** md5 signature: fdf0cd52b1c54e1dcbcfca5ccc5ef545 ****/
 		%feature("compactdefaultargs") GetExpression;
@@ -2358,14 +2422,20 @@ opencascade::handle<TDF_DeltaOnModification>
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -2654,14 +2724,20 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -3474,14 +3550,20 @@ opencascade::handle<TDF_DeltaOnModification>
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Extent ******************/
 		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
@@ -3675,14 +3757,20 @@ None
 ") TDataStd_Integer;
 		 TDataStd_Integer();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: ace457d697a3a35733c5ac95429cad31 ****/
 		%feature("compactdefaultargs") Get;
@@ -3913,14 +4001,20 @@ opencascade::handle<TDF_DeltaOnModification>
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -4209,14 +4303,20 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -4529,14 +4629,20 @@ None
 ") TDataStd_Name;
 		 TDataStd_Name();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: e1828ec7ac26ddd7d323df220dcd7fed ****/
 		%feature("compactdefaultargs") Get;
@@ -4803,14 +4909,20 @@ None
 ") ChangeStrings;
 		void ChangeStrings(const TDataStd_DataMapOfStringString & theStrings);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetArrayOfIntegers ******************/
 		/**** md5 signature: 4a96aa72d1e7e4a27eb2b5a59638120e ****/
 		%feature("compactdefaultargs") GetArrayOfIntegers;
@@ -5359,14 +5471,20 @@ opencascade::handle<TDataStd_Integer>
 ") Append;
 		opencascade::handle<TDataStd_Integer> Append(const Standard_Integer value, const Standard_Boolean isExported = Standard_False);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Find ******************/
 		/**** md5 signature: 400d5175f4317bb9f7f5240746dcd5c9 ****/
 		%feature("compactdefaultargs") Find;
@@ -5489,14 +5607,20 @@ None
 ") TDataStd_Real;
 		 TDataStd_Real();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: fc841fb28cb01367762b1d75c09d001e ****/
 		%feature("compactdefaultargs") Get;
@@ -5753,14 +5877,20 @@ opencascade::handle<TDF_DeltaOnModification>
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetDelta ******************/
 		/**** md5 signature: 570a92cb77e1626ccd16d9bb8bc3044c ****/
 		%feature("compactdefaultargs") GetDelta;
@@ -6049,14 +6179,20 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -6369,14 +6505,20 @@ None
 ") TDataStd_ReferenceArray;
 		 TDataStd_ReferenceArray();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -6678,14 +6820,20 @@ None
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Extent ******************/
 		/**** md5 signature: 8da0d7e03de513b08d57e17232ac7391 ****/
 		%feature("compactdefaultargs") Extent;
@@ -7013,14 +7161,20 @@ None
 ") TDataStd_Relation;
 		 TDataStd_Relation();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -7175,14 +7329,20 @@ None
 ") TDataStd_Tick;
 		 TDataStd_Tick();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -7382,14 +7542,20 @@ int
 ") Depth;
 		Standard_Integer Depth();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Father ******************/
 		/**** md5 signature: fd4e43dbfa571e1a17a926e895f43183 ****/
 		%feature("compactdefaultargs") Father;
@@ -7908,14 +8074,20 @@ None
 ") TDataStd_UAttribute;
 		 TDataStd_UAttribute();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** ID ******************/
 		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
 		%feature("compactdefaultargs") ID;
@@ -8079,14 +8251,20 @@ None
 ") Desassign;
 		void Desassign();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Expression ******************/
 		/**** md5 signature: 02085d2fcb8779a8d70fbdbc746f552b ****/
 		%feature("compactdefaultargs") Expression;

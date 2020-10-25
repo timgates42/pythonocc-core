@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cdf.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -330,13 +331,21 @@ None
 ") Open;
 		void Open(const opencascade::handle<CDM_Document> & aDocument);
 
+		/****************** Read ******************/
+		/**** md5 signature: 2c6e92cd73a9f0704d2827c005260663 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads adoc from standard seekable stream theistream, the stream should support seek fuctionality.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+theIStream: Standard_IStream
+
+Returns
+-------
+opencascade::handle<CDM_Document>
+") Read;
+		opencascade::handle<CDM_Document> Read(Standard_IStream &InValue);
+
 		/****************** ReaderFromFormat ******************/
 		/**** md5 signature: aab6344d555db3220a1fcf7db3c7d59e ****/
 		%feature("compactdefaultargs") ReaderFromFormat;

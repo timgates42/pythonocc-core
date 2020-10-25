@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_toploc.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -113,22 +114,36 @@ None
 ") TopLoc_Datum3D;
 		 TopLoc_Datum3D(const gp_Trsf & T);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
+		/****************** ShallowDump ******************/
+		/**** md5 signature: becb37fcb2ae0b90bde25605537706e5 ****/
+		%feature("compactdefaultargs") ShallowDump;
+		%feature("autodoc", "Writes the contents of this datum3d to the stream s.
+
+Parameters
+----------
+
+Returns
+-------
+S: Standard_OStream
+") ShallowDump;
+		void ShallowDump(Standard_OStream &OutValue);
+
 		/****************** Transformation ******************/
 		/**** md5 signature: 567e6ee373139970f4679dbb49e28e7c ****/
 		%feature("compactdefaultargs") Transformation;
@@ -172,14 +187,22 @@ None
 ") TopLoc_ItemLocation;
 		 TopLoc_ItemLocation(const opencascade::handle<TopLoc_Datum3D> & D, const Standard_Integer P);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 };
 
 
@@ -250,14 +273,22 @@ TopLoc_Location
 ") Divided;
 		TopLoc_Location Divided(const TopLoc_Location & Other);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** FirstDatum ******************/
 		/**** md5 signature: 6cdca59f5ca5329a1b7dd3455c8d5c55 ****/
 		%feature("compactdefaultargs") FirstDatum;
@@ -420,14 +451,20 @@ TopLoc_Location
 ") Predivided;
 		TopLoc_Location Predivided(const TopLoc_Location & Other);
 
+		/****************** ShallowDump ******************/
+		/**** md5 signature: becb37fcb2ae0b90bde25605537706e5 ****/
+		%feature("compactdefaultargs") ShallowDump;
+		%feature("autodoc", "Prints the contents of <self> on the stream <s>.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+S: Standard_OStream
+") ShallowDump;
+		void ShallowDump(Standard_OStream &OutValue);
+
 		/****************** Transformation ******************/
 		/**** md5 signature: 567e6ee373139970f4679dbb49e28e7c ****/
 		%feature("compactdefaultargs") Transformation;

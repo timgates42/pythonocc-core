@@ -34,10 +34,35 @@ VrmlConverter_PerspectiveCamera = VrmlConverter_TypeOfCamera.VrmlConverter_Persp
 VrmlConverter_OrthographicCamera = VrmlConverter_TypeOfCamera.VrmlConverter_OrthographicCamera
 
 class VrmlConverter_Curve:
-	pass
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, U1: float, U2: float, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, U1: float, U2: float, aNbPoints: int) -> Standard_OStream: ...
 
 class VrmlConverter_DeflectionCurve:
-	pass
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, U1: float, U2: float, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, aDeflection: float, aLimit: float) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, aDeflection: float, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, U1: float, U2: float, aDeflection: float) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aCurve: Adaptor3d_Curve, aParams: TColStd_HArray1OfReal, aNbNodes: int, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
 
 class VrmlConverter_Drawer(Standard_Transient):
 	def __init__(self) -> None: ...
@@ -84,7 +109,8 @@ class VrmlConverter_Drawer(Standard_Transient):
 	def WireDraw(self) -> bool: ...
 
 class VrmlConverter_HLRShape:
-	pass
+	@staticmethod
+	def Add(aShape: TopoDS_Shape, aDrawer: VrmlConverter_Drawer, aProjector: VrmlConverter_Projector) -> Standard_OStream: ...
 
 class VrmlConverter_LineAspect(Standard_Transient):
 	@overload
@@ -108,6 +134,7 @@ class VrmlConverter_PointAspect(Standard_Transient):
 
 class VrmlConverter_Projector(Standard_Transient):
 	def __init__(self, Shapes: TopTools_Array1OfShape, Focus: float, DX: float, DY: float, DZ: float, XUp: float, YUp: float, ZUp: float, Camera: Optional[VrmlConverter_TypeOfCamera] = VrmlConverter_NoCamera, Light: Optional[VrmlConverter_TypeOfLight] = VrmlConverter_NoLight) -> None: ...
+	def Add(self) -> Standard_OStream: ...
 	def Camera(self) -> VrmlConverter_TypeOfCamera: ...
 	def Light(self) -> VrmlConverter_TypeOfLight: ...
 	def Projector(self) -> HLRAlgo_Projector: ...
@@ -115,6 +142,8 @@ class VrmlConverter_Projector(Standard_Transient):
 	def SetLight(self, aLight: VrmlConverter_TypeOfLight) -> None: ...
 
 class VrmlConverter_ShadedShape:
+	@staticmethod
+	def Add(aShape: TopoDS_Shape, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
 	@staticmethod
 	def ComputeNormal(aFace: TopoDS_Face, pc: Poly_Connect, Nor: TColgp_Array1OfDir) -> None: ...
 
@@ -130,16 +159,36 @@ class VrmlConverter_ShadingAspect(Standard_Transient):
 	def ShapeHints(self) -> Vrml_ShapeHints: ...
 
 class VrmlConverter_WFDeflectionRestrictedFace:
-	pass
+	@overload
+	@staticmethod
+	def Add(aFace: BRepAdaptor_HSurface, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aFace: BRepAdaptor_HSurface, DrawUIso: bool, DrawVIso: bool, Deflection: float, NBUiso: int, NBViso: int, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@staticmethod
+	def AddUIso(aFace: BRepAdaptor_HSurface, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@staticmethod
+	def AddVIso(aFace: BRepAdaptor_HSurface, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
 
 class VrmlConverter_WFDeflectionShape:
-	pass
+	@staticmethod
+	def Add(aShape: TopoDS_Shape, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
 
 class VrmlConverter_WFRestrictedFace:
-	pass
+	@overload
+	@staticmethod
+	def Add(aFace: BRepAdaptor_HSurface, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Add(aFace: BRepAdaptor_HSurface, DrawUIso: bool, DrawVIso: bool, NBUiso: int, NBViso: int, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@staticmethod
+	def AddUIso(aFace: BRepAdaptor_HSurface, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
+	@staticmethod
+	def AddVIso(aFace: BRepAdaptor_HSurface, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
 
 class VrmlConverter_WFShape:
-	pass
+	@staticmethod
+	def Add(aShape: TopoDS_Shape, aDrawer: VrmlConverter_Drawer) -> Standard_OStream: ...
 
 class VrmlConverter_IsoAspect(VrmlConverter_LineAspect):
 	@overload

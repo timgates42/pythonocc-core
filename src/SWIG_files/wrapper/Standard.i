@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_standard.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -692,14 +693,20 @@ bool
 ") IsSame;
 		Standard_Boolean IsSame(const Standard_GUID & uid);
 
+		/****************** ShallowDump ******************/
+		/**** md5 signature: 81ee27b22dec06425d33dc871c4cc32d ****/
+		%feature("compactdefaultargs") ShallowDump;
+		%feature("autodoc", "Display the guid with the following format: //! '00000000-0000-0000-0000-000000000000'.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+aStream: Standard_OStream
+") ShallowDump;
+		void ShallowDump(Standard_OStream &OutValue);
+
 		/****************** ToCString ******************/
 		/**** md5 signature: bf4dad3d25b8e651de1bf421311dfc4f ****/
 		%feature("compactdefaultargs") ToCString;
@@ -1222,14 +1229,20 @@ opencascade::handle<Standard_Failure>
 ") NewInstance;
 		static opencascade::handle<Standard_Failure> NewInstance(const char * aMessage);
 
+		/****************** Print ******************/
+		/**** md5 signature: d235d3de64b8acd643aa3048f95f1c9c ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints on the stream <s> the exception name followed by the error message. level: advanced warning: the operator 'ostream& operator<< (standard_ostream&, opencascade::handle<standard_failure>&)' is implemented. (this operator uses the method print).
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+s: Standard_OStream
+") Print;
+		void Print(Standard_OStream &OutValue);
+
 		/****************** Raise ******************/
 		/**** md5 signature: 91c037d4badacf1008e024b8b4afb779 ****/
 		%feature("compactdefaultargs") Raise;
@@ -1759,14 +1772,20 @@ opencascade::handle<Standard_Type>
 ") Parent;
 		const opencascade::handle<Standard_Type> & Parent();
 
+		/****************** Print ******************/
+		/**** md5 signature: 938e58a4c905f64555b1dcca06400750 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints type (address of descriptor + name) to a stream.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theStream: Standard_OStream
+") Print;
+		void Print(Standard_OStream &OutValue);
+
 		/****************** Register ******************/
 		/**** md5 signature: 8e6b8df94dcb0fc4b1d9d92877cf9314 ****/
 		%feature("compactdefaultargs") Register;

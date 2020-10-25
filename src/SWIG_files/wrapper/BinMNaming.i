@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binmnaming.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -230,13 +231,21 @@ None
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
 
+		/****************** ReadShapeSection ******************/
+		/**** md5 signature: cdc419c38a43093c48ed49853e017874 ****/
+		%feature("compactdefaultargs") ReadShapeSection;
+		%feature("autodoc", "Input the shapes from bin document file.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadShapeSectionFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadShapeSection(s);}
-            };
+Parameters
+----------
+theIS: Standard_IStream
+
+Returns
+-------
+None
+") ReadShapeSection;
+		void ReadShapeSection(Standard_IStream &InValue);
+
 		/****************** SetFormatNb ******************/
 		/**** md5 signature: 0be85d313a433ece54bf3e7f8567bba5 ****/
 		%feature("compactdefaultargs") SetFormatNb;
@@ -267,14 +276,20 @@ None
 ") SetWithTriangles;
 		void SetWithTriangles(const Standard_Boolean isWithTriangles);
 
+		/****************** WriteShapeSection ******************/
+		/**** md5 signature: eed6a02e9857f61587bf9c9aa39038fe ****/
+		%feature("compactdefaultargs") WriteShapeSection;
+		%feature("autodoc", "Output the shapes into bin document file.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteShapeSectionToString() {
-            std::stringstream s;
-            self->WriteShapeSection(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theOS: Standard_OStream
+") WriteShapeSection;
+		void WriteShapeSection(Standard_OStream &OutValue);
+
 };
 
 

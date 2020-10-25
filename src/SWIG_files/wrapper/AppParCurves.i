@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_appparcurves.html
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -621,14 +622,20 @@ int
 ") Dimension;
 		Standard_Integer Dimension(const Standard_Integer CuIndex);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3285fe47a669df0eece9c96593dad879 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		virtual void Dump(Standard_OStream &OutValue);
+
 		/****************** NbCurves ******************/
 		/**** md5 signature: f7f6dbd981df076443155a5a87b5c223 ****/
 		%feature("compactdefaultargs") NbCurves;
@@ -905,14 +912,20 @@ int
 ") Dimension;
 		Standard_Integer Dimension(const Standard_Integer Index);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3285fe47a669df0eece9c96593dad879 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		virtual void Dump(Standard_OStream &OutValue);
+
 		/****************** NbPoints ******************/
 		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
 		%feature("compactdefaultargs") NbPoints;
@@ -1196,14 +1209,20 @@ int
 ") Degree;
 		virtual Standard_Integer Degree();
 
+		/****************** Dump ******************/
+		/**** md5 signature: b42defe2d7a7208961fa81b225a70479 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		virtual void Dump(Standard_OStream &OutValue);
+
 		/****************** Knots ******************/
 		/**** md5 signature: 8001460ab922c7159116eb85f0693b97 ****/
 		%feature("compactdefaultargs") Knots;

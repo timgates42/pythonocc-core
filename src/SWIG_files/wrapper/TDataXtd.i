@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_tdataxtd.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -274,6 +275,36 @@ None
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
+		/****************** Print ******************/
+		/**** md5 signature: b887e0f1c5d77aad7c10be1a19a24553 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the name of the geometry dimension <geo> as a string on the stream <s> and returns <s>.
+
+Parameters
+----------
+GEO: TDataXtd_GeometryEnum
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TDataXtd_GeometryEnum GEO, Standard_OStream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 8cb942ce210f9a734cdf2fc0bed8e8c5 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "Prints the name of the constraint <ctr> as a string on the stream <s> and returns <s>.
+
+Parameters
+----------
+CTR: TDataXtd_ConstraintEnum
+
+Returns
+-------
+S: Standard_OStream
+") Print;
+		static Standard_OStream & Print(const TDataXtd_ConstraintEnum CTR, Standard_OStream &OutValue);
+
 };
 
 
@@ -299,14 +330,20 @@ None
 ") TDataXtd_Axis;
 		 TDataXtd_Axis();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -456,14 +493,20 @@ None
 ") CollectChildConstraints;
 		static void CollectChildConstraints(const TDF_Label & aLabel, TDF_LabelList & TheList);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetGeometry ******************/
 		/**** md5 signature: 11769af2e389c68724cfcb5f085ee941 ****/
 		%feature("compactdefaultargs") GetGeometry;
@@ -971,14 +1014,20 @@ bool
 ") Cylinder;
 		static Standard_Boolean Cylinder(const opencascade::handle<TNaming_NamedShape> & S, gp_Cylinder & G);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Ellipse ******************/
 		/**** md5 signature: 8f6f76d68f97a2ead65bf6d14c1f45c2 ****/
 		%feature("compactdefaultargs") Ellipse;
@@ -1345,14 +1394,20 @@ None
 ") TDataXtd_Placement;
 		 TDataXtd_Placement();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -1459,14 +1514,20 @@ None
 ") TDataXtd_Plane;
 		 TDataXtd_Plane();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -1589,14 +1650,20 @@ None
 ") TDataXtd_Point;
 		 TDataXtd_Point();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -2391,14 +2458,20 @@ None
 ") TDataXtd_Shape;
 		 TDataXtd_Shape();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Find ******************/
 		/**** md5 signature: b7eef569fb5abc3a63bf9482c967edfd ****/
 		%feature("compactdefaultargs") Find;
@@ -2593,14 +2666,20 @@ None
 ") Deflection;
 		void Deflection(const Standard_Real theDeflection);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: 1b44a31d5fb6444cba54e6b97ce6cc73 ****/
 		%feature("compactdefaultargs") Get;
@@ -3062,14 +3141,20 @@ None
 ") ComputeTrsfs;
 		void ComputeTrsfs(TDataXtd_Array1OfTrsf & Trsfs);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOS: Standard_OStream
+") Dump;
+		virtual Standard_OStream & Dump(Standard_OStream &OutValue);
+
 		/****************** GetPatternID ******************/
 		/**** md5 signature: 96f86031c210757be1a52536bbd3cdef ****/
 		%feature("compactdefaultargs") GetPatternID;

@@ -206,6 +206,8 @@ class TObj_ObjectIterator(Standard_Transient):
 class TObj_Persistence:
 	@staticmethod
 	def CreateNewObject(theType: str, theLabel: TDF_Label) -> TObj_Object: ...
+	@staticmethod
+	def DumpTypes() -> Standard_OStream: ...
 
 class TObj_TIntSparseArray(TDF_Attribute):
 	def __init__(self) -> None: ...
@@ -304,6 +306,7 @@ class TObj_TReference(TDF_Attribute):
 
 class TObj_TXYZ(TDF_Attribute):
 	def __init__(self) -> None: ...
+	def Dump(self) -> Tuple[Standard_OStream, Standard_OStream]: ...
 	def Get(self) -> gp_XYZ: ...
 	@staticmethod
 	def GetID() -> Standard_GUID: ...
@@ -390,6 +393,7 @@ TObj_Model_SetNewName = TObj_Model.SetNewName
 TObj_Object_Detach = TObj_Object.Detach
 TObj_Object_GetObj = TObj_Object.GetObj
 TObj_Persistence_CreateNewObject = TObj_Persistence.CreateNewObject
+TObj_Persistence_DumpTypes = TObj_Persistence.DumpTypes
 TObj_TIntSparseArray_GetID = TObj_TIntSparseArray.GetID
 TObj_TIntSparseArray_Set = TObj_TIntSparseArray.Set
 TObj_TModel_GetID = TObj_TModel.GetID

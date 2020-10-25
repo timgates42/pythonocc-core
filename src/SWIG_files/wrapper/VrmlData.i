@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_vrmldata.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -464,14 +465,20 @@ opencascade::handle<NCollection_IncAllocator>
 ") Allocator;
 		const opencascade::handle<NCollection_IncAllocator> & Allocator();
 
+		/****************** Dump ******************/
+		/**** md5 signature: c7b7f3310b5193de5f2365d935cd2c95 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "/** * diagnostic dump of the contents */.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theStream: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** FindNode ******************/
 		/**** md5 signature: bb943cbcf67db155aea431d31d5e4097 ****/
 		%feature("compactdefaultargs") FindNode;

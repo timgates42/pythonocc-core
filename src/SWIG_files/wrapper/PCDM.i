@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_pcdm.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -244,6 +245,22 @@ PCDM_TypeOfFileDriver
 ") FileDriverType;
 		static PCDM_TypeOfFileDriver FileDriverType(const TCollection_AsciiString & aFileName, PCDM_BaseDriverPointer & aBaseDriver);
 
+		/****************** FileDriverType ******************/
+		/**** md5 signature: 63552cc6df318f2d2a03774ffe634b95 ****/
+		%feature("compactdefaultargs") FileDriverType;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theIStream: Standard_IStream
+theBaseDriver: PCDM_BaseDriverPointer
+
+Returns
+-------
+PCDM_TypeOfFileDriver
+") FileDriverType;
+		static PCDM_TypeOfFileDriver FileDriverType(Standard_IStream &InValue, PCDM_BaseDriverPointer & theBaseDriver);
+
 };
 
 
@@ -279,6 +296,22 @@ Returns
 TCollection_ExtendedString
 ") FileFormat;
 		static TCollection_ExtendedString FileFormat(const TCollection_ExtendedString & aFileName);
+
+		/****************** FileFormat ******************/
+		/**** md5 signature: 290efbfac7ae6d5a7f55f592df7bd7f7 ****/
+		%feature("compactdefaultargs") FileFormat;
+		%feature("autodoc", "Tries to get a format from the stream. returns an empty string if the file could not be read or does not have a fileformat information.
+
+Parameters
+----------
+theIStream: Standard_IStream
+theData: Storage_Data
+
+Returns
+-------
+TCollection_ExtendedString
+") FileFormat;
+		static TCollection_ExtendedString FileFormat(Standard_IStream &InValue, opencascade::handle<Storage_Data> & theData);
 
 		/****************** Open ******************/
 		/**** md5 signature: 2bce6d13ddc8fb38fe945eb8b065e2d0 ****/
@@ -537,6 +570,24 @@ None
 ") Read;
 		virtual void Read(const TCollection_ExtendedString & aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication);
 
+		/****************** Read ******************/
+		/**** md5 signature: 3090f1377a9f36ace261cc4ddeb5cc0f ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theIStream: Standard_IStream
+theStorageData: Storage_Data
+theDoc: CDM_Document
+theApplication: CDM_Application
+
+Returns
+-------
+None
+") Read;
+		virtual void Read(Standard_IStream &InValue, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication);
+
 };
 
 
@@ -708,6 +759,21 @@ Returns
 None
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
+
+		/****************** Write ******************/
+		/**** md5 signature: 9887e3d3e817deafbab054cb87da4ea5 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Write <thedocument> to theostream.
+
+Parameters
+----------
+theDocument: CDM_Document
+
+Returns
+-------
+theOStream: Standard_OStream
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, Standard_OStream &OutValue);
 
 };
 
@@ -1093,6 +1159,21 @@ Returns
 None
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, const TCollection_ExtendedString & aFileName);
+
+		/****************** Write ******************/
+		/**** md5 signature: 195aa298e7a7e80be210fe7a13be9039 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Write <thedocument> to theostream.
+
+Parameters
+----------
+theDocument: CDM_Document
+
+Returns
+-------
+theOStream: Standard_OStream
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, Standard_OStream &OutValue);
 
 };
 

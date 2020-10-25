@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_gp.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -10073,14 +10074,22 @@ gp_Mat
 ") Divided;
 		gp_Mat Divided(const Standard_Real Scalar);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Invert ******************/
 		/**** md5 signature: 980f166f600d23a8c77565829af2eeff ****/
 		%feature("compactdefaultargs") Invert;
@@ -15784,14 +15793,22 @@ None
 ") gp_Trsf;
 		 gp_Trsf(const gp_Trsf2d & T);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** Form ******************/
 		/**** md5 signature: 9bfbf058eebcd895fd3b29a4bba4ff05 ****/
 		%feature("compactdefaultargs") Form;
@@ -19776,14 +19793,22 @@ float
 ") DotCross;
 		Standard_Real DotCross(const gp_XYZ & Coord1, const gp_XYZ & Coord2);
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** GetData ******************/
 		/**** md5 signature: fd12237104a886c16bf39a8750201e39 ****/
 		%feature("compactdefaultargs") GetData;

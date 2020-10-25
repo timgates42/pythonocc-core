@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_brepcheck.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -274,6 +275,21 @@ Returns
 float
 ") PrecSurface;
 		static Standard_Real PrecSurface(const opencascade::handle<Adaptor3d_HSurface> & aAHSurf);
+
+		/****************** Print ******************/
+		/**** md5 signature: 0f4f5589255e0cda18fd387e5d4e5b49 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+Stat: BRepCheck_Status
+
+Returns
+-------
+OS: Standard_OStream
+") Print;
+		static void Print(const BRepCheck_Status Stat, Standard_OStream &OutValue);
 
 		/****************** SelfIntersection ******************/
 		/**** md5 signature: bb04b20d19bd60ec83e4525199c06c3b ****/

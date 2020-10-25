@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_igescontrol.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -634,6 +635,22 @@ Returns
 opencascade::handle<Transfer_FinderProcess>
 ") TransferProcess;
 		const opencascade::handle<Transfer_FinderProcess> & TransferProcess();
+
+		/****************** Write ******************/
+		/**** md5 signature: 641c31af3cf254e70aab3e12c5732d18 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Computes then writes the model to an ostream returns true when done, false in case of error.
+
+Parameters
+----------
+fnes: bool,optional
+	default value is Standard_False
+
+Returns
+-------
+S: Standard_OStream
+") Write;
+		Standard_Boolean Write(Standard_OStream &OutValue, const Standard_Boolean fnes = Standard_False);
 
 		/****************** Write ******************/
 		/**** md5 signature: 336d0511a9ae227341af6444cb65363f ****/

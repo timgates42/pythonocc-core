@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_cdm.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -825,14 +826,20 @@ Standard_ExtString
 ") Presentation;
 		Standard_ExtString Presentation();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOStream: Standard_OStream
+") Print;
+		Standard_OStream & Print(Standard_OStream &OutValue);
+
 		/****************** Reference ******************/
 		/**** md5 signature: 8fb9128b48e5f8568694a49ff83331ff ****/
 		%feature("compactdefaultargs") Reference;
@@ -1395,14 +1402,20 @@ TCollection_ExtendedString
 ") Path;
 		TCollection_ExtendedString Path();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+anOStream: Standard_OStream
+") Print;
+		Standard_OStream & Print(Standard_OStream &OutValue);
+
 		/****************** SetIsReadOnly ******************/
 		/**** md5 signature: 9f4f8649234a1411f6086a147fb0f5ad ****/
 		%feature("compactdefaultargs") SetIsReadOnly;

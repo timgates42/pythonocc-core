@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_bintools.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -90,6 +91,143 @@ typedef BinTools_LocationSet * BinTools_LocationSetPtr;
 %rename(bintools) BinTools;
 class BinTools {
 	public:
+		/****************** GetBool ******************/
+		/**** md5 signature: 790955f4f4ba6908f582aee44fb265dd ****/
+		%feature("compactdefaultargs") GetBool;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+theValue: bool
+") GetBool;
+		static Standard_IStream & GetBool(Standard_IStream &InValue, Standard_Boolean &OutValue);
+
+		/****************** GetExtChar ******************/
+		/**** md5 signature: 123b0c66c3051e9feb92d9bfbbb192e6 ****/
+		%feature("compactdefaultargs") GetExtChar;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+IS: Standard_IStream
+theValue: Standard_ExtCharacter
+
+Returns
+-------
+Standard_IStream
+") GetExtChar;
+		static Standard_IStream & GetExtChar(Standard_IStream &InValue, Standard_ExtCharacter & theValue);
+
+		/****************** GetInteger ******************/
+		/**** md5 signature: 651f0a33e9e7502671bc3ef42df123eb ****/
+		%feature("compactdefaultargs") GetInteger;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+theValue: int
+") GetInteger;
+		static Standard_IStream & GetInteger(Standard_IStream &InValue, Standard_Integer &OutValue);
+
+		/****************** GetReal ******************/
+		/**** md5 signature: 38bb080ad1790d03931bd0c0aa629b48 ****/
+		%feature("compactdefaultargs") GetReal;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+theValue: float
+") GetReal;
+		static Standard_IStream & GetReal(Standard_IStream &InValue, Standard_Real &OutValue);
+
+		/****************** PutBool ******************/
+		/**** md5 signature: 0afdd320ec549f8b3da2cea1881b2e46 ****/
+		%feature("compactdefaultargs") PutBool;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theValue: bool
+
+Returns
+-------
+OS: Standard_OStream
+") PutBool;
+		static Standard_OStream & PutBool(Standard_OStream &OutValue, const Standard_Boolean theValue);
+
+		/****************** PutExtChar ******************/
+		/**** md5 signature: 6f5f97a4001fb0c14520fc2b5b0888a6 ****/
+		%feature("compactdefaultargs") PutExtChar;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theValue: Standard_ExtCharacter
+
+Returns
+-------
+OS: Standard_OStream
+") PutExtChar;
+		static Standard_OStream & PutExtChar(Standard_OStream &OutValue, const Standard_ExtCharacter theValue);
+
+		/****************** PutInteger ******************/
+		/**** md5 signature: 9e70411996f2de65be7008dfb8c34a78 ****/
+		%feature("compactdefaultargs") PutInteger;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theValue: int
+
+Returns
+-------
+OS: Standard_OStream
+") PutInteger;
+		static Standard_OStream & PutInteger(Standard_OStream &OutValue, const Standard_Integer theValue);
+
+		/****************** PutReal ******************/
+		/**** md5 signature: ac54248d89f12e5ac4d4e960e080065d ****/
+		%feature("compactdefaultargs") PutReal;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theValue: float
+
+Returns
+-------
+OS: Standard_OStream
+") PutReal;
+		static Standard_OStream & PutReal(Standard_OStream &OutValue, const Standard_Real theValue);
+
+		/****************** Read ******************/
+		/**** md5 signature: 04776c9f875d43f0d752c83484bdaaa0 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads a shape from <thestream> and returns it in <theshape>.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+theStream: Standard_IStream
+
+Returns
+-------
+None
+") Read;
+		static void Read(TopoDS_Shape & theShape, Standard_IStream &InValue);
+
 		/****************** Read ******************/
 		/**** md5 signature: f0d3026b2788ff9320fd4df9010bd64b ****/
 		%feature("compactdefaultargs") Read;
@@ -105,6 +243,21 @@ Returns
 bool
 ") Read;
 		static Standard_Boolean Read(TopoDS_Shape & theShape, const char * theFile);
+
+		/****************** Write ******************/
+		/**** md5 signature: 42eb6d41fcc1eb368f7c413c2abf5644 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes <theshape> on <thestream> in binary format.
+
+Parameters
+----------
+theShape: TopoDS_Shape
+
+Returns
+-------
+theStream: Standard_OStream
+") Write;
+		static void Write(const TopoDS_Shape & theShape, Standard_OStream &OutValue);
 
 		/****************** Write ******************/
 		/**** md5 signature: 437b11c00a79e3ca0f54a0ec19eec209 ****/
@@ -203,21 +356,66 @@ int
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom2d_Curve> & C);
 
+		/****************** Read ******************/
+		/**** md5 signature: e0ade46168fbfd205cb072426bbabac5 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads the content of me from the stream <is>. me is first cleared.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+IS: Standard_IStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteToString() {
-            std::stringstream s;
-            self->Write(s);
-            return s.str();}
-        };
+Returns
+-------
+None
+") Read;
+		void Read(Standard_IStream &InValue);
+
+		/****************** ReadCurve2d ******************/
+		/**** md5 signature: 8e76149c6e11b24fea6111aef9de38d2 ****/
+		%feature("compactdefaultargs") ReadCurve2d;
+		%feature("autodoc", "Reads the curve from the stream. the curve is assumed to have been written with the write method.
+
+Parameters
+----------
+IS: Standard_IStream
+C: Geom2d_Curve
+
+Returns
+-------
+Standard_IStream
+") ReadCurve2d;
+		static Standard_IStream & ReadCurve2d(Standard_IStream &InValue, opencascade::handle<Geom2d_Curve> & C);
+
+		/****************** Write ******************/
+		/**** md5 signature: 26d5c57dbc383da9144a6151592feb6a ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of me on the stream <os> in a format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		void Write(Standard_OStream &OutValue);
+
+		/****************** WriteCurve2d ******************/
+		/**** md5 signature: d6643db7025151a5e591fa1cf67fdba2 ****/
+		%feature("compactdefaultargs") WriteCurve2d;
+		%feature("autodoc", "Dumps the curve on the binary stream, that can be read back.
+
+Parameters
+----------
+C: Geom2d_Curve
+
+Returns
+-------
+OS: Standard_OStream
+") WriteCurve2d;
+		static void WriteCurve2d(const opencascade::handle<Geom2d_Curve> & C, Standard_OStream &OutValue);
+
 };
 
 
@@ -303,21 +501,66 @@ int
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Curve> & C);
 
+		/****************** Read ******************/
+		/**** md5 signature: e0ade46168fbfd205cb072426bbabac5 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads the content of me from the stream <is>. me is first cleared.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+IS: Standard_IStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteToString() {
-            std::stringstream s;
-            self->Write(s);
-            return s.str();}
-        };
+Returns
+-------
+None
+") Read;
+		void Read(Standard_IStream &InValue);
+
+		/****************** ReadCurve ******************/
+		/**** md5 signature: dd391fb5d956a43e1ec7bd591b8d99ee ****/
+		%feature("compactdefaultargs") ReadCurve;
+		%feature("autodoc", "Reads the curve from the stream. the curve is assumed to have been written with the write method.
+
+Parameters
+----------
+IS: Standard_IStream
+C: Geom_Curve
+
+Returns
+-------
+Standard_IStream
+") ReadCurve;
+		static Standard_IStream & ReadCurve(Standard_IStream &InValue, opencascade::handle<Geom_Curve> & C);
+
+		/****************** Write ******************/
+		/**** md5 signature: 26d5c57dbc383da9144a6151592feb6a ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of me on the stream <os> in a format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		void Write(Standard_OStream &OutValue);
+
+		/****************** WriteCurve ******************/
+		/**** md5 signature: 074fd9a5c75cb1d9e2c21e9844fb05c9 ****/
+		%feature("compactdefaultargs") WriteCurve;
+		%feature("autodoc", "Dumps the curve on the stream in binary format that can be read back.
+
+Parameters
+----------
+C: Geom_Curve
+
+Returns
+-------
+OS: Standard_OStream
+") WriteCurve;
+		static void WriteCurve(const opencascade::handle<Geom_Curve> & C, Standard_OStream &OutValue);
+
 };
 
 
@@ -410,21 +653,35 @@ int
 ") NbLocations;
 		Standard_Integer NbLocations();
 
+		/****************** Read ******************/
+		/**** md5 signature: e0ade46168fbfd205cb072426bbabac5 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads the content of me from the stream <is>. me is first cleared.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+IS: Standard_IStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteToString() {
-            std::stringstream s;
-            self->Write(s);
-            return s.str();}
-        };
+Returns
+-------
+None
+") Read;
+		void Read(Standard_IStream &InValue);
+
+		/****************** Write ******************/
+		/**** md5 signature: 26d5c57dbc383da9144a6151592feb6a ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of me on the stream <os> in a format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		void Write(Standard_OStream &OutValue);
+
 };
 
 
@@ -582,41 +839,115 @@ int
 ") NbShapes;
 		Standard_Integer NbShapes();
 
+		/****************** Read ******************/
+		/**** md5 signature: be178169588964a2de2c9f09faf2c4b5 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads the content of me from the binary stream <is>. me is first cleared. //! reads the locations. //! reads the geometry calling readgeometry. //! reads the shapes. for each shape reads the type. calls readgeometry(t,s). reads the flag, the subshapes.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+IS: Standard_IStream
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadGeometryFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadGeometry(s);}
-            };
+Returns
+-------
+None
+") Read;
+		virtual void Read(Standard_IStream &InValue);
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygon3DFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygon3D(s);}
-            };
+		/****************** Read ******************/
+		/**** md5 signature: 96fe37731b3efbbaef299875d724b057 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads from <is> a shape and returns it in s. <nbshapes> is the number of tshapes in the set.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygonOnTriangulationFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygonOnTriangulation(s);}
-            };
+Parameters
+----------
+S: TopoDS_Shape
+IS: Standard_IStream
+NbShapes: int
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadTriangulationFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadTriangulation(s);}
-            };
+Returns
+-------
+None
+") Read;
+		virtual void Read(TopoDS_Shape & S, Standard_IStream &InValue, const Standard_Integer NbShapes);
+
+		/****************** ReadGeometry ******************/
+		/**** md5 signature: 071626988705cdd0ce6fd667b570a836 ****/
+		%feature("compactdefaultargs") ReadGeometry;
+		%feature("autodoc", "Reads the geometry of me from the stream <is>.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+None
+") ReadGeometry;
+		virtual void ReadGeometry(Standard_IStream &InValue);
+
+		/****************** ReadGeometry ******************/
+		/**** md5 signature: 4e371a9743f73b6a83ec48df91308b56 ****/
+		%feature("compactdefaultargs") ReadGeometry;
+		%feature("autodoc", "Reads the geometry of a shape of type <t> from the stream <is> and returns it in <s>.
+
+Parameters
+----------
+T: TopAbs_ShapeEnum
+IS: Standard_IStream
+S: TopoDS_Shape
+
+Returns
+-------
+None
+") ReadGeometry;
+		virtual void ReadGeometry(const TopAbs_ShapeEnum T, Standard_IStream &InValue, TopoDS_Shape & S);
+
+		/****************** ReadPolygon3D ******************/
+		/**** md5 signature: ed59fe78b6d605ad419a2a44401c07d2 ****/
+		%feature("compactdefaultargs") ReadPolygon3D;
+		%feature("autodoc", "Reads the 3d polygons of me from the stream <is>.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+None
+") ReadPolygon3D;
+		void ReadPolygon3D(Standard_IStream &InValue);
+
+		/****************** ReadPolygonOnTriangulation ******************/
+		/**** md5 signature: 82b9cdb3ce24b84cdf91eebebdb541fa ****/
+		%feature("compactdefaultargs") ReadPolygonOnTriangulation;
+		%feature("autodoc", "Reads the polygons on triangulation of me from the stream <is>.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+None
+") ReadPolygonOnTriangulation;
+		void ReadPolygonOnTriangulation(Standard_IStream &InValue);
+
+		/****************** ReadTriangulation ******************/
+		/**** md5 signature: 719dbb8f8b53d1cd44b4ffc33a2910e2 ****/
+		%feature("compactdefaultargs") ReadTriangulation;
+		%feature("autodoc", "Reads the triangulation of me from the stream <is>.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+None
+") ReadTriangulation;
+		void ReadTriangulation(Standard_IStream &InValue);
+
 		/****************** SetFormatNb ******************/
 		/**** md5 signature: efa61c5f0aa586c699f53e1139cd95f9 ****/
 		%feature("compactdefaultargs") SetFormatNb;
@@ -662,46 +993,106 @@ TopoDS_Shape
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer I);
 
+		/****************** Write ******************/
+		/**** md5 signature: 5bb9aeb491e3a70cdf3fc0cc2d24c606 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of me on the stream <os> in binary format that can be read back by read. //! writes the locations. //! writes the geometry calling writegeometry. //! dumps the shapes from last to first. for each shape : write the type. calls writegeometry(s). write the flags, the subshapes.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteToString() {
-            std::stringstream s;
-            self->Write(s);
-            return s.str();}
-        };
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteGeometryToString() {
-            std::stringstream s;
-            self->WriteGeometry(s);
-            return s.str();}
-        };
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		virtual void Write(Standard_OStream &OutValue);
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WritePolygon3DToString() {
-            std::stringstream s;
-            self->WritePolygon3D(s);
-            return s.str();}
-        };
+		/****************** Write ******************/
+		/**** md5 signature: 4dee654e63549bd15e408433814ece5a ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes on <os> the shape <s>. writes the orientation, the index of the tshape and the index of the location.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WritePolygonOnTriangulationToString() {
-            std::stringstream s;
-            self->WritePolygonOnTriangulation(s);
-            return s.str();}
-        };
+Parameters
+----------
+S: TopoDS_Shape
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteTriangulationToString() {
-            std::stringstream s;
-            self->WriteTriangulation(s);
-            return s.str();}
-        };
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		virtual void Write(const TopoDS_Shape & S, Standard_OStream &OutValue);
+
+		/****************** WriteGeometry ******************/
+		/**** md5 signature: e1c3de1bde69181c4bab904488b6d646 ****/
+		%feature("compactdefaultargs") WriteGeometry;
+		%feature("autodoc", "Writes the geometry of me on the stream <os> in a binary format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") WriteGeometry;
+		virtual void WriteGeometry(Standard_OStream &OutValue);
+
+		/****************** WriteGeometry ******************/
+		/**** md5 signature: 122b2c21a82fbea7b7f8cfce352176e9 ****/
+		%feature("compactdefaultargs") WriteGeometry;
+		%feature("autodoc", "Writes the geometry of <s> on the stream <os> in a binary format that can be read back by read.
+
+Parameters
+----------
+S: TopoDS_Shape
+
+Returns
+-------
+OS: Standard_OStream
+") WriteGeometry;
+		virtual void WriteGeometry(const TopoDS_Shape & S, Standard_OStream &OutValue);
+
+		/****************** WritePolygon3D ******************/
+		/**** md5 signature: afe77741a5cb0ccf4671bb178de8f6eb ****/
+		%feature("compactdefaultargs") WritePolygon3D;
+		%feature("autodoc", "Writes the 3d polygons on the stream <os> in a format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") WritePolygon3D;
+		void WritePolygon3D(Standard_OStream &OutValue);
+
+		/****************** WritePolygonOnTriangulation ******************/
+		/**** md5 signature: b42f3f07a40803077d4f82d9859b266d ****/
+		%feature("compactdefaultargs") WritePolygonOnTriangulation;
+		%feature("autodoc", "Writes the polygons on triangulation on the stream <os> in a format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") WritePolygonOnTriangulation;
+		void WritePolygonOnTriangulation(Standard_OStream &OutValue);
+
+		/****************** WriteTriangulation ******************/
+		/**** md5 signature: 45e49c99cde7b1878176d0765d139de9 ****/
+		%feature("compactdefaultargs") WriteTriangulation;
+		%feature("autodoc", "Writes the triangulation on the stream <os> in a format that can be read back by read.
+
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") WriteTriangulation;
+		void WriteTriangulation(Standard_OStream &OutValue);
+
 };
 
 
@@ -768,13 +1159,37 @@ int
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Surface> & S);
 
+		/****************** Read ******************/
+		/**** md5 signature: e0ade46168fbfd205cb072426bbabac5 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Reads the content of me from the stream <is>. me is first cleared.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+None
+") Read;
+		void Read(Standard_IStream &InValue);
+
+		/****************** ReadSurface ******************/
+		/**** md5 signature: aadfa21c3ae4baf4c6a6f03347b99a89 ****/
+		%feature("compactdefaultargs") ReadSurface;
+		%feature("autodoc", "Reads the surface from the stream. the surface is assumed to have been written with the write method.
+
+Parameters
+----------
+IS: Standard_IStream
+S: Geom_Surface
+
+Returns
+-------
+Standard_IStream
+") ReadSurface;
+		static Standard_IStream & ReadSurface(Standard_IStream &InValue, opencascade::handle<Geom_Surface> & S);
+
 		/****************** Surface ******************/
 		/**** md5 signature: f08a9f2a886e0a3933ae15a38f9b8dda ****/
 		%feature("compactdefaultargs") Surface;
@@ -790,14 +1205,35 @@ opencascade::handle<Geom_Surface>
 ") Surface;
 		opencascade::handle<Geom_Surface> Surface(const Standard_Integer I);
 
+		/****************** Write ******************/
+		/**** md5 signature: 26d5c57dbc383da9144a6151592feb6a ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of me on the stream <os> in binary format that can be read back by read.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteToString() {
-            std::stringstream s;
-            self->Write(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		void Write(Standard_OStream &OutValue);
+
+		/****************** WriteSurface ******************/
+		/**** md5 signature: d645c674fed0f1be122422d21f98561d ****/
+		%feature("compactdefaultargs") WriteSurface;
+		%feature("autodoc", "Dumps the surface on the stream in binary format that can be read back.
+
+Parameters
+----------
+S: Geom_Surface
+
+Returns
+-------
+OS: Standard_OStream
+") WriteSurface;
+		static void WriteSurface(const opencascade::handle<Geom_Surface> & S, Standard_OStream &OutValue);
+
 };
 
 

@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_selectmgr.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -346,14 +347,22 @@ bool
 ") ComesFromDecomposition;
 		Standard_Boolean ComesFromDecomposition();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 595d01778fb31e0a4540c99629539134 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** HandleMouseClick ******************/
 		/**** md5 signature: add80052ddbdb459ce100ea351ce9701 ****/
 		%feature("compactdefaultargs") HandleMouseClick;
@@ -853,14 +862,22 @@ opencascade::handle<SelectMgr_Selection>
 ") CurrentSelection;
 		const opencascade::handle<SelectMgr_Selection> & CurrentSelection();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** ErasePresentations ******************/
 		/**** md5 signature: 1ca7dc31012600af9ffc1ee563cb7a3d ****/
 		%feature("compactdefaultargs") ErasePresentations;
@@ -2743,14 +2760,22 @@ Bnd_Range
 ") ChangeUnclipRange;
 		Bnd_Range & ChangeUnclipRange();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 61c0a503af80da4332c7fce5ed44ed96 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** GetNearestDepth ******************/
 		/**** md5 signature: a7d31c5d6b83b64f1f6f7f0def838d0f ****/
 		%feature("compactdefaultargs") GetNearestDepth;

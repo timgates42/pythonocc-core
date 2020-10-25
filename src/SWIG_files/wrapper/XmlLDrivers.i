@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_xmlldrivers.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -240,6 +241,24 @@ None
 ") Read;
 		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication);
 
+		/****************** Read ******************/
+		/**** md5 signature: 71e8749fff94e2103739d77004d9f13f ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theIStream: Standard_IStream
+theStorageData: Storage_Data
+theDoc: CDM_Document
+theApplication: CDM_Application
+
+Returns
+-------
+None
+") Read;
+		virtual void Read(Standard_IStream &InValue, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication);
+
 };
 
 
@@ -301,6 +320,21 @@ Returns
 None
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, const TCollection_ExtendedString & theFileName);
+
+		/****************** Write ******************/
+		/**** md5 signature: 195aa298e7a7e80be210fe7a13be9039 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theDocument: CDM_Document
+
+Returns
+-------
+theOStream: Standard_OStream
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, Standard_OStream &OutValue);
 
 };
 

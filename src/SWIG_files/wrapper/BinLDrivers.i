@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binldrivers.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -233,6 +234,24 @@ None
 ") Read;
 		virtual void Read(const TCollection_ExtendedString & theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication);
 
+		/****************** Read ******************/
+		/**** md5 signature: 71e8749fff94e2103739d77004d9f13f ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "No available documentation.
+
+Parameters
+----------
+theIStream: Standard_IStream
+theStorageData: Storage_Data
+theDoc: CDM_Document
+theApplication: CDM_Application
+
+Returns
+-------
+None
+") Read;
+		virtual void Read(Standard_IStream &InValue, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication);
+
 };
 
 
@@ -320,6 +339,23 @@ uint64_t
 ") Offset;
 		uint64_t Offset();
 
+		/****************** ReadTOC ******************/
+		/**** md5 signature: aa5989b7bb9e813cdb3b05b8c1df4758 ****/
+		%feature("compactdefaultargs") ReadTOC;
+		%feature("autodoc", "Fill a documentsection instance from the data that are read from toc.
+
+Parameters
+----------
+theSection: BinLDrivers_DocumentSection
+theIS: Standard_IStream
+theDocFormatVersion: int
+
+Returns
+-------
+None
+") ReadTOC;
+		static void ReadTOC(BinLDrivers_DocumentSection & theSection, Standard_IStream &InValue, const Standard_Integer theDocFormatVersion);
+
 		/****************** SetLength ******************/
 		/**** md5 signature: 9c89e70c52c75c8f071a4a8b0807f508 ****/
 		%feature("compactdefaultargs") SetLength;
@@ -350,14 +386,35 @@ None
 ") SetOffset;
 		void SetOffset(const uint64_t theOffset);
 
+		/****************** Write ******************/
+		/**** md5 signature: 311bc39743a4280b83242cd7f53c262e ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Save offset and length data into the section entry in the document toc (list of sections).
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteTOCToString() {
-            std::stringstream s;
-            self->WriteTOC(s);
-            return s.str();}
-        };
+Parameters
+----------
+theOffset: uint64_t
+
+Returns
+-------
+theOS: Standard_OStream
+") Write;
+		void Write(Standard_OStream &OutValue, const uint64_t theOffset);
+
+		/****************** WriteTOC ******************/
+		/**** md5 signature: e62703377b28adc37936e916bdc5a7cd ****/
+		%feature("compactdefaultargs") WriteTOC;
+		%feature("autodoc", "Create a section entry in the document toc (list of sections).
+
+Parameters
+----------
+
+Returns
+-------
+theOS: Standard_OStream
+") WriteTOC;
+		void WriteTOC(Standard_OStream &OutValue);
+
 };
 
 
@@ -430,6 +487,21 @@ Returns
 None
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, const TCollection_ExtendedString & theFileName);
+
+		/****************** Write ******************/
+		/**** md5 signature: 195aa298e7a7e80be210fe7a13be9039 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Write <thedocument> to theostream.
+
+Parameters
+----------
+theDocument: CDM_Document
+
+Returns
+-------
+theOStream: Standard_OStream
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, Standard_OStream &OutValue);
 
 };
 

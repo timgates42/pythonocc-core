@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_binobjmgt.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -714,13 +715,21 @@ BinObjMgt_Persistent
 ") PutShortRealArray;
 		BinObjMgt_Persistent & PutShortRealArray(const BinObjMgt_PShortReal theArray, const Standard_Integer theLength);
 
+		/****************** Read ******************/
+		/**** md5 signature: 703e11a3fb46f18575a45a43966aa937 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "Retrieves <self> from the stream. inline standard_istream& operator>> (standard_istream&, binobjmgt_persistent&) is also available.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Parameters
+----------
+theIS: Standard_IStream
+
+Returns
+-------
+Standard_IStream
+") Read;
+		Standard_IStream & Read(Standard_IStream &InValue);
+
 		/****************** SetId ******************/
 		/**** md5 signature: 3131e8337f46d2a085b133db913d7e12 ****/
 		%feature("compactdefaultargs") SetId;
@@ -788,14 +797,20 @@ int
 ") TypeId;
 		Standard_Integer TypeId();
 
+		/****************** Write ******************/
+		/**** md5 signature: 62bce2134d5456072f8d7b7195e7a7d4 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Stores <self> to the stream. inline standard_ostream& operator<< (standard_ostream&, binobjmgt_persistent&) is also available.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteToString() {
-            std::stringstream s;
-            self->Write(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theOS: Standard_OStream
+") Write;
+		Standard_OStream & Write(Standard_OStream &OutValue);
+
 };
 
 

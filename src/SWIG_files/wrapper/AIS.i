@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_ais.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -6232,14 +6233,22 @@ None
 ") ClearOwner;
 		void ClearOwner();
 
+		/****************** DumpJson ******************/
+		/**** md5 signature: 8af3b1c7dfcb53abb129d4743b27fa35 ****/
+		%feature("compactdefaultargs") DumpJson;
+		%feature("autodoc", "Dumps the content of me into the stream.
 
-            %feature("autodoc", "1");
-            %extend{
-                std::string DumpJsonToString(int depth=-1) {
-                std::stringstream s;
-                self->DumpJson(s, depth);
-                return s.str();}
-            };
+Parameters
+----------
+theDepth: int,optional
+	default value is -1
+
+Returns
+-------
+theOStream: Standard_OStream
+") DumpJson;
+		virtual void DumpJson(Standard_OStream &OutValue, const Standard_Integer theDepth = -1);
+
 		/****************** GetContext ******************/
 		/**** md5 signature: 9141453181bb741f4971f346e5b4d4cb ****/
 		%feature("compactdefaultargs") GetContext;

@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_poly.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -169,6 +170,51 @@ None
 ") ComputeNormals;
 		static void ComputeNormals(const opencascade::handle<Poly_Triangulation> & Tri);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 20ef821c6b6ca818ea67764cc6c404e0 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the triangulation. this is a call to the previous method with comapct set to false.
+
+Parameters
+----------
+T: Poly_Triangulation
+
+Returns
+-------
+OS: Standard_OStream
+") Dump;
+		static void Dump(const opencascade::handle<Poly_Triangulation> & T, Standard_OStream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 124fa6bb0d1c932fed8d7c2f072153ff ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the 3d polygon. this is a call to the previous method with comapct set to false.
+
+Parameters
+----------
+P: Poly_Polygon3D
+
+Returns
+-------
+OS: Standard_OStream
+") Dump;
+		static void Dump(const opencascade::handle<Poly_Polygon3D> & P, Standard_OStream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: cec175f277279955d3c47430641a6e45 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps the 2d polygon. this is a call to the previous method with comapct set to false.
+
+Parameters
+----------
+P: Poly_Polygon2D
+
+Returns
+-------
+OS: Standard_OStream
+") Dump;
+		static void Dump(const opencascade::handle<Poly_Polygon2D> & P, Standard_OStream &OutValue);
+
 		/****************** PointOnTriangle ******************/
 		/**** md5 signature: f16707629e29bded6eb5591e5f49f99e ****/
 		%feature("compactdefaultargs") PointOnTriangle;
@@ -188,27 +234,102 @@ float
 ") PointOnTriangle;
 		static Standard_Real PointOnTriangle(const gp_XY & P1, const gp_XY & P2, const gp_XY & P3, const gp_XY & P, gp_XY & UV);
 
+		/****************** ReadPolygon2D ******************/
+		/**** md5 signature: 5203f6d8bfde5b08c5cdc75dc617276a ****/
+		%feature("compactdefaultargs") ReadPolygon2D;
+		%feature("autodoc", "Reads a 2d polygon from the stream <is>.
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygon2DFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygon2D(s);}
-            };
+Parameters
+----------
+IS: Standard_IStream
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygon3DFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygon3D(s);}
-            };
+Returns
+-------
+opencascade::handle<Poly_Polygon2D>
+") ReadPolygon2D;
+		static opencascade::handle<Poly_Polygon2D> ReadPolygon2D(Standard_IStream &InValue);
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadTriangulationFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadTriangulation(s);}
-            };
+		/****************** ReadPolygon3D ******************/
+		/**** md5 signature: b03d53c160a0fe0fe5c347003d67f6e3 ****/
+		%feature("compactdefaultargs") ReadPolygon3D;
+		%feature("autodoc", "Reads a 3d polygon from the stream <is>.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+opencascade::handle<Poly_Polygon3D>
+") ReadPolygon3D;
+		static opencascade::handle<Poly_Polygon3D> ReadPolygon3D(Standard_IStream &InValue);
+
+		/****************** ReadTriangulation ******************/
+		/**** md5 signature: ed5c32c8ff81d9265e69f08077c31530 ****/
+		%feature("compactdefaultargs") ReadTriangulation;
+		%feature("autodoc", "Reads a triangulation from the stream <is>.
+
+Parameters
+----------
+IS: Standard_IStream
+
+Returns
+-------
+opencascade::handle<Poly_Triangulation>
+") ReadTriangulation;
+		static opencascade::handle<Poly_Triangulation> ReadTriangulation(Standard_IStream &InValue);
+
+		/****************** Write ******************/
+		/**** md5 signature: bbcae193e547f8e4d5c04a8c44cf6fdd ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of the triangulation <t> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+
+Parameters
+----------
+T: Poly_Triangulation
+Compact: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		static void Write(const opencascade::handle<Poly_Triangulation> & T, Standard_OStream &OutValue, const Standard_Boolean Compact = Standard_True);
+
+		/****************** Write ******************/
+		/**** md5 signature: a0bed661a393965709bba5b5fe673585 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of the 3d polygon <p> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+
+Parameters
+----------
+P: Poly_Polygon3D
+Compact: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		static void Write(const opencascade::handle<Poly_Polygon3D> & P, Standard_OStream &OutValue, const Standard_Boolean Compact = Standard_True);
+
+		/****************** Write ******************/
+		/**** md5 signature: b1b1fb366e3d9a725c25026564e0ba21 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "Writes the content of the 2d polygon <p> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+
+Parameters
+----------
+P: Poly_Polygon2D
+Compact: bool,optional
+	default value is Standard_True
+
+Returns
+-------
+OS: Standard_OStream
+") Write;
+		static void Write(const opencascade::handle<Poly_Polygon2D> & P, Standard_OStream &OutValue, const Standard_Boolean Compact = Standard_True);
+
 };
 
 
@@ -419,14 +540,20 @@ None
 ") Clear;
 		void Clear(const opencascade::handle<NCollection_BaseAllocator > &);
 
+		/****************** Dump ******************/
+		/**** md5 signature: c7b7f3310b5193de5f2365d935cd2c95 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "No available documentation.
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
+
+Returns
+-------
+theStream: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
 		/****************** GetIndex ******************/
 		/**** md5 signature: be68311c24420307bc05134408d2c9e3 ****/
 		%feature("compactdefaultargs") GetIndex;

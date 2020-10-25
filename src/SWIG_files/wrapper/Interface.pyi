@@ -756,6 +756,13 @@ class Interface_MSG:
 	def IsKey(mess: str) -> bool: ...
 	@staticmethod
 	def NDate(text: str) -> Tuple[bool, int, int, int, int, int, int]: ...
+	@staticmethod
+	def Print(val: str, max: int, just: Optional[int] = -1) -> Standard_OStream: ...
+	@staticmethod
+	def PrintTrace() -> Standard_OStream: ...
+	@overload
+	@staticmethod
+	def Read(S: Standard_IStream) -> int: ...
 	@overload
 	@staticmethod
 	def Read(file: str) -> int: ...
@@ -770,6 +777,8 @@ class Interface_MSG:
 	@staticmethod
 	def Translated(key: str) -> str: ...
 	def Value(self) -> str: ...
+	@staticmethod
+	def Write(rootkey: Optional[str] = "") -> Tuple[int, Standard_OStream]: ...
 
 class Interface_MapAsciiStringHasher:
 	@staticmethod
@@ -1094,6 +1103,8 @@ Interface_MSG_Intervalled = Interface_MSG.Intervalled
 Interface_MSG_IsKey = Interface_MSG.IsKey
 Interface_MSG_NDate = Interface_MSG.NDate
 Interface_MSG_Print = Interface_MSG.Print
+Interface_MSG_PrintTrace = Interface_MSG.PrintTrace
+Interface_MSG_Read = Interface_MSG.Read
 Interface_MSG_Read = Interface_MSG.Read
 Interface_MSG_Record = Interface_MSG.Record
 Interface_MSG_SetMode = Interface_MSG.SetMode

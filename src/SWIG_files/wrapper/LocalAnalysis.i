@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_localanalysis.htm
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -106,6 +107,36 @@ LocalAnalysis_CurvatureNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_
 %rename(localanalysis) LocalAnalysis;
 class LocalAnalysis {
 	public:
+		/****************** Dump ******************/
+		/**** md5 signature: 0c461d717d7298d3576332c66a4c9d44 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "This class compute s and gives tools to check the local continuity between two points situated on 2 curves) //! this fonction gives informations about a variable curvecontinuity.
+
+Parameters
+----------
+surfconti: LocalAnalysis_SurfaceContinuity
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		static void Dump(const LocalAnalysis_SurfaceContinuity & surfconti, Standard_OStream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 74ee8e149b67cec4713e41bac235b420 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "This fonction gives informations about a variable surfacecontinuity.
+
+Parameters
+----------
+curvconti: LocalAnalysis_CurveContinuity
+
+Returns
+-------
+o: Standard_OStream
+") Dump;
+		static void Dump(const LocalAnalysis_CurveContinuity & curvconti, Standard_OStream &OutValue);
+
 };
 
 

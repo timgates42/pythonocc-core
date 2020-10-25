@@ -33,6 +33,7 @@ https://www.opencascade.com/doc/occt-7.4.0/refman/html/package_monitool.html"
 %include ../common/FunctionTransformers.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1831,22 +1832,34 @@ MoniTool_DataMapOfTimer
 ") Dictionary;
 		static MoniTool_DataMapOfTimer & Dictionary();
 
+		/****************** Dump ******************/
+		/**** md5 signature: ba17251f1205c984d981679cb87ee281 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "Dumps current state of a timer shortly (one-line output).
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpTimersToString() {
-            std::stringstream s;
-            self->DumpTimers(s);
-            return s.str();}
-        };
+Returns
+-------
+ostr: Standard_OStream
+") Dump;
+		void Dump(Standard_OStream &OutValue);
+
+		/****************** DumpTimers ******************/
+		/**** md5 signature: a163d6e3a2170cc59ce7e312bac33510 ****/
+		%feature("compactdefaultargs") DumpTimers;
+		%feature("autodoc", "Dumps contents of the whole dictionary.
+
+Parameters
+----------
+
+Returns
+-------
+ostr: Standard_OStream
+") DumpTimers;
+		static void DumpTimers(Standard_OStream &OutValue);
+
 		/****************** GetAmendments ******************/
 		/**** md5 signature: c2be8078ab69a477345c7d01bfe03646 ****/
 		%feature("compactdefaultargs") GetAmendments;
