@@ -694,7 +694,7 @@ class TestWrapperFeatures(unittest.TestCase):
         """ some objects can be serialized to a string
         """
         v = math_Vector(0, 2)
-        serialized_v = v.DumpToString()
+        serialized_v = v.Dump()
         # should output
         expected_output = 'math_Vector of Length = 3\nmath_Vector(0) = 0\nmath_Vector(1) = 0\nmath_Vector(2) = 0\n'
         self.assertEqual(expected_output, serialized_v)
@@ -712,7 +712,7 @@ class TestWrapperFeatures(unittest.TestCase):
         self.assertEqual([round(corner_min.X(), 3), round(corner_min.Y(), 3), round(corner_min.Z(), 3)],
                          [-10., -10., -10.])
         # check dump json export is working
-        json_string = bnd_box.DumpJsonToString()
+        json_string = bnd_box.DumpJson()
         # try to load the output string
         json_imported_dict = json.loads("{" + json_string + "}")
         self.assertTrue(len(json_imported_dict) > 0)  # at least one entry
