@@ -38,7 +38,7 @@ try:
     import numpy as np
 except ImportError:
     error_log = """ Error You must install pythreejs/ipywidgets/numpy to run the jupyter notebook renderer.
-If you installed pythonocc using conda, just type :
+If you installed pythonocc using conda, just type:
 $ conda install -c conda-forge pythreejs"""
     print(error_log)
     sys.exit(0)
@@ -61,10 +61,10 @@ from OCC.Extend.ShapeFactory import (get_oriented_boundingbox,
 try:
     from OCC.Extend.DataExchange import export_shape_to_svg
     HAVE_SVG = True
-except:
+except ImportError:
     HAVE_SVG = False
 
-def create_download_link(a_str, filename):  
+def create_download_link(a_str, filename):
     b64 = base64.b64encode(a_str.encode())
     payload = b64.decode()
     html = '<a download="{filename}" href="data:text/x3d;base64,{payload}" target="_blank">{title}</a>'
@@ -91,8 +91,8 @@ def progress_indicator(progress, prompt="Progress"):
 #
 # Util mathematical functions
 #
-def _add(vec1, vec2):
-    return list(v1 + v2 for v1, v2 in zip(vec1, vec2))
+def _add(vec_1, vec_2):
+    return list(v_1 + v_2 for v_1, v_2 in zip(vec_1, vec_2))
 
 
 def _explode(edge_list):
@@ -107,17 +107,17 @@ def format_color(r, g, b):
     return '#%02x%02x%02x' % (r, g, b)
 
 
-def _distance(v1, v2):
-    return np.linalg.norm([x - y for x, y in zip(v1, v2)])
+def _distance(v_1, v_2):
+    return np.linalg.norm([x - y for x, y in zip(v_1, v_2)])
 
 
 def _bool_or_new(val):
     return val if isinstance(val, bool) else val["new"]
 
 
-def _opt(b1, b2):
-    return (min(b1[0], b2[0]), max(b1[1], b2[1]), min(b1[2], b2[2]),
-            max(b1[3], b2[3]), min(b1[4], b2[4]), max(b1[5], b2[5]))
+def _opt(b_1, b_2):
+    return (min(b_1[0], b_2[0]), max(b_1[1], b_2[1]), min(b_1[2], b_2[2]),
+            max(b_1[3], b_2[3]), min(b_1[4], b_2[4]), max(b_1[5], b_2[5]))
 
 
 def _shift(v, offset):
@@ -217,9 +217,9 @@ class Axes(Helpers):
     def __init__(self, bb_center, length=1, width=3, display_labels=False):
         Helpers.__init__(self, bb_center)
 
-        self.axes = []
+        self._axes = []
         for vector, color in zip(([length, 0, 0], [0, length, 0], [0, 0, length]), ('red', 'green', 'blue')):
-            self.axes.append(LineSegments2(LineSegmentsGeometry(positions=[[self.center,
+            self._axes.append(LineSegments2(LineSegmentsGeometry(positions=[[self.center,
                                                                             _shift(self.center, vector)]]),
                                            LineMaterial(linewidth=width, color=color)))
 
@@ -229,17 +229,20 @@ class Axes(Helpers):
             y_text = make_text("Y", [0, length, 0])
             z_text = make_text("Z", [0, 0, length])
 
-            self.axes.append(x_text)
-            self.axes.append(y_text)
-            self.axes.append(z_text)
+            self._axes.append(x_text)
+            self._axes.append(y_text)
+            self._axes.append(z_text)
+
+    def get_axes(self):
+        return self._axes
 
     def set_position(self, position):
         for i in range(3):
-            self.axes[i].position = position
+            self._axes[i].position = position
 
     def set_visibility(self, change):
         for i in range(3):
-            self.axes[i].visible = change
+            self._axes[i].visible = change
 
 #
 # Custom Material helper
@@ -250,7 +253,7 @@ class CustomMaterial(ShaderMaterial):
 
         shader = ShaderLib[typ]
 
-        fragmentShader = """
+        fragment_shader = """
         uniform float alpha;
         """
         frag_from = "gl_FragColor = vec4( outgoingLight, diffuseColor.a );"
@@ -260,13 +263,13 @@ class CustomMaterial(ShaderMaterial):
             } else {
                 gl_FragColor = vec4( diffuseColor.r, diffuseColor.g, diffuseColor.b, alpha * diffuseColor.a );
             }"""
-        fragmentShader += shader["fragmentShader"].replace(frag_from, frag_to)
+        fragment_shader += shader["fragmentShader"].replace(frag_from, frag_to)
 
-        vertexShader = shader["vertexShader"]
+        vertex_shader = shader["vertexShader"]
         uniforms = shader["uniforms"]
         uniforms["alpha"] = dict(value=0.7)
 
-        ShaderMaterial.__init__(self, uniforms=uniforms, vertexShader=vertexShader, fragmentShader=fragmentShader)
+        ShaderMaterial.__init__(self, uniforms=uniforms, vertexShader=vertex_shader, fragmentShader=fragment_shader)
         self.lights = True
 
     @property
@@ -309,12 +312,12 @@ class BoundingBox:
         self.center = (self.xmin + self.xsize / 2.0, self.ymin + self.ysize / 2.0, self.zmin + self.zsize / 2.0)
         self.max = reduce(lambda a, b: max(abs(a), abs(b)), bbox)
 
-    def _max_dist_from_center(self):
+    def compute_max_dist_from_center(self):
         return max([_distance(self.center, v)
                     for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
                    ])
 
-    def _max_dist_from_origin(self):
+    def compute_max_dist_from_origin(self):
         return max([np.linalg.norm(v)
                     for v in itertools.product((self.xmin, self.xmax), (self.ymin, self.ymax), (self.zmin, self.zmax))
                    ])
@@ -323,8 +326,8 @@ class BoundingBox:
         bbox = Bnd_Box()
         bbox.SetGap(self.tol)
         brepbndlib_Add(obj, bbox, True)
-        values = bbox.Get()
-        return (values[0], values[3], values[1], values[4], values[2], values[5])
+        xmin, ymin, zmin, xmax, ymax, zmax = bbox.Get()
+        return xmin, xmax, ymin, ymax, zmin, zmax
 
     def _bbox(self, objects):
         bb = reduce(_opt, [self._bounding_box(obj) for obj in objects])
@@ -353,7 +356,7 @@ class JupyterRenderer:
         size: a tuple (width, height). Must be a square, or shapes will look like deformed
         compute_normals_mode: optional, set to SERVER_SIDE by default. This flag lets you choose the
         way normals are computed. If SERVER_SIDE is selected (default value), then normals
-        will be computed by the Tesselator, packed as a python tuple, and send as a json structure
+        will be computed by the Tessellator, packed as a python tuple, and send as a json structure
         to the client. If, on the other hand, CLIENT_SIDE is chose, then the computer only compute vertex
         indices, and let the normals be computed by the client (the web js machine embedded in the webrowser).
 
@@ -385,7 +388,10 @@ class JupyterRenderer:
         self._camera_distance_factor = 6
         self._camera_initial_zoom = 2.5
 
-        # a dictionnary of all the shapes belonging to the renderer
+        # the controller
+        self._controller = None
+
+        # a dictionary of all the shapes belonging to the renderer
         # each element is a key 'mesh_id:shape'
         self._shapes = {}
 
@@ -406,7 +412,9 @@ class JupyterRenderer:
         self._savestate = None
 
         self._selection_color = format_color(232, 176, 36)
+        self._current_selection_material_color = None
 
+        self.clicked_obj = None
         self._select_callbacks = []  # a list of all functions called after an object is selected
 
         # UI
@@ -427,6 +435,10 @@ class JupyterRenderer:
                           self._shp_properties_button,
                           self._toggle_shp_visibility_button,
                           self._remove_shp_button]
+        self._axes = None
+        self._horizontal_grid = None
+        self._vertical_grid = None
+
         self.html = HTML("")
 
     def create_button(self, description, tooltip, disabled, handler):
@@ -443,7 +455,7 @@ class JupyterRenderer:
 
     def remove_shape(self, *kargs):
         self.clicked_obj.visible = not self.clicked_obj.visible
-        # remove shape fro mthe mapping dict
+        # remove shape from the mapping dict
         cur_id = self.clicked_obj.name
         del self._shapes[cur_id]
         self._remove_shp_button.disabled = True
@@ -498,11 +510,11 @@ class JupyterRenderer:
         self.clicked_obj.visible = not self.clicked_obj.visible
 
     def toggle_axes_visibility(self, change):
-        self.axes.set_visibility(_bool_or_new(change))
+        self._axes.set_visibility(_bool_or_new(change))
 
     def toggle_grid_visibility(self, change):
-        self.horizontal_grid.set_visibility(_bool_or_new(change))
-        self.vertical_grid.set_visibility(_bool_or_new(change))
+        self._horizontal_grid.set_visibility(_bool_or_new(change))
+        self._vertical_grid.set_visibility(_bool_or_new(change))
 
     def click(self, value):
         """ called whenever a shape  or edge is clicked
@@ -548,16 +560,14 @@ class JupyterRenderer:
         """
         if not callable(callback):
             raise AssertionError("You must provide a callable to register the callback")
-        else:
-            self._select_callbacks.append(callback)
+        self._select_callbacks.append(callback)
 
     def unregister_callback(self, callback):
         """ Remove a callback from the callback list
         """
         if callback not in self._select_callbacks:
             raise AssertionError("This callback is not registered")
-        else:
-            self._select_callbacks.remove(callback)
+        self._select_callbacks.remove(callback)
 
     def GetSelectedShape(self):
         """ Returns the selected shape
@@ -598,7 +608,7 @@ class JupyterRenderer:
         """ Displays a topods_shape in the renderer instance.
         shp: the TopoDS_Shape to render
         shape_color: the shape color, in html corm, eg '#abe000'
-        render_edges: optional, False by default. If True, compute and dislay all
+        render_edges: optional, False by default. If True, compute and display all
                       edges as a linear interpolation of segments.
         edge_color: optional, black by default. The color used for edge rendering,
                     in html form eg '#ff00ee'
@@ -606,7 +616,7 @@ class JupyterRenderer:
         vertex_color: optional
         quality: optional, 1.0 by default. If set to something lower than 1.0,
                       mesh will be more precise. If set to something higher than 1.0,
-                      mesh will be less precise, i.e. lower numer of triangles.
+                      mesh will be less precise, i.e. lower number of triangles.
         transparency: optional, False by default (opaque).
         opacity: optional, float, by default to 1 (opaque). if transparency is set to True,
                  0. is fully opaque, 1. is fully transparent.
@@ -655,13 +665,13 @@ class JupyterRenderer:
         """ shp is a list of gp_Pnt
         """
         vertices_list = []  # will be passed to pythreejs
-        BB = BRep_Builder()
+        brp_bldr = BRep_Builder()
         compound = TopoDS_Compound()
-        BB.MakeCompound(compound)
+        brp_bldr.MakeCompound(compound)
 
         for vertex in pnt_list:
             vertex_to_add = BRepBuilderAPI_MakeVertex(vertex).Shape()
-            BB.Add(compound, vertex_to_add)
+            brp_bldr.Add(compound, vertex_to_add)
             vertices_list.append([vertex.X(), vertex.Y(), vertex.Z()])
 
         # map the Points and the AIS_PointCloud
@@ -715,7 +725,7 @@ class JupyterRenderer:
                         quality=1.0,
                         transparency=False,
                         opacity=1.):
-        # first, compute the tesselation
+        # first, compute the tessellation
         tess = ShapeTesselator(shp)
         tess.Compute(compute_edges=render_edges,
                      mesh_quality=quality,
@@ -781,13 +791,12 @@ class JupyterRenderer:
         return shape_mesh
 
     def _scale(self, vec):
-        r = self._bb._max_dist_from_center() * self._camera_distance_factor
+        r = self._bb.compute_max_dist_from_center() * self._camera_distance_factor
         n = np.linalg.norm(vec)
         new_vec = [v / n * r for v in vec]
         return new_vec
 
     def _material(self, color, transparent=False, opacity=1.0):
-        #material = MeshPhongMaterial()
         material = CustomMaterial("standard")
         material.color = color
         material.clipping = True
@@ -806,7 +815,6 @@ class JupyterRenderer:
         self._displayed_pickable_objects = Group()
         self._current_shape_selection = None
         self._current_mesh_selection = None
-        self._current_selection_material = None
         self._renderer.scene = Scene(children=[])
 
     def Display(self, position=None, rotation=None):
@@ -816,7 +824,7 @@ class JupyterRenderer:
         else:  # if nothing registered yet, create a fake bb
             self._bb = BoundingBox([[BRepPrimAPI_MakeSphere(5.).Shape()]])
         bb_max = self._bb.max
-        orbit_radius = 1.5 * self._bb._max_dist_from_center()
+        orbit_radius = 1.5 * self._bb.compute_max_dist_from_center()
 
         # Set up camera
         camera_target = self._bb.center
@@ -840,15 +848,15 @@ class JupyterRenderer:
         ambient_light = AmbientLight(intensity=0.1)
 
         # Set up Helpers
-        self.axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
-        self.horizontal_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
+        self._axes = Axes(bb_center=self._bb.center, length=bb_max * 1.1)
+        self._horizontal_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
                                     colorCenterLine='#aaa', colorGrid='#ddd')
-        self.vertical_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
+        self._vertical_grid = Grid(bb_center=self._bb.center, maximum=bb_max,
                                   colorCenterLine='#aaa', colorGrid='#ddd')
         # Set up scene
-        environment = self.axes.axes + key_lights + [ambient_light,
-                                                     self.horizontal_grid.grid,
-                                                     self.vertical_grid.grid,
+        environment = self._axes.get_axes() + key_lights + [ambient_light,
+                                                     self._horizontal_grid.grid,
+                                                     self._vertical_grid.grid,
                                                      self._camera]
 
         scene_shp = Scene(children=[self._displayed_pickable_objects,
@@ -876,10 +884,10 @@ class JupyterRenderer:
                                   antialias=True)
 
         # set rotation and position for each grid
-        self.horizontal_grid.set_position((0, 0, 0))
-        self.horizontal_grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
+        self._horizontal_grid.set_position((0, 0, 0))
+        self._horizontal_grid.set_rotation((math.pi / 2.0, 0, 0, "XYZ"))
 
-        self.vertical_grid.set_position((0, - bb_max, 0))
+        self._vertical_grid.set_position((0, - bb_max, 0))
 
         self._savestate = (self._camera.rotation, self._controller.target)
 
